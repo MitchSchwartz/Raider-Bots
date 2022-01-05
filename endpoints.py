@@ -1,21 +1,37 @@
 from flask import Flask
 from threading import Thread
-from timer_calc import timerCalc
-from update_bot_name import botNameUpdate
+from get_token_values import getTokenValues
+from tournament_timer_update import tournamentTimerUpdate
+from reset_timer_update import resetTimerUpdate
 
 
 app = Flask('')
 
 
 @app.route('/')
+# pinged every minute by https://console.cron-job.org/dashboard
 def home():
-    TimerStr = timerCalc()
-    botNameUpdate(TimerStr)
-    return TimerStr
-    
+    print("\n", ">>> RUNNING HOME", "\n")
+    getTokenValues()
+    tournamentTimerUpdate("")
+    resetTimerUpdate()
+
+    print("\n", ">>> Home Executed", "\n")
+    return("ok")
+ 
+
+@app.route('/tokenbots')
+def tokenbots():
+    getTokenValues()
+
+
+@app.route('/tourney/<nextTourney>')
+#def tourneyTimer(nextTourney):
+  #updateNextTourney(nextTourney)
+
 
 def run():
-  app.run(host='0.0.0.0',port=8080)
+    app.run(host='0.0.0.0',port=8080)
 
 
 def keep_alive():

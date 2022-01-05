@@ -1,42 +1,40 @@
+
 import os
 import discord
-from endpoints import keep_alive
-from update_bot_name import botNameUpdate
-from timer_calc import timerCalc
+import asyncio
+from endpoints import home, keep_alive
 
-client = discord.Client()
-
+#from discord.ext import commands
 
 
-### I forget what this does might be old
-@client.event
+timerBot = discord.Client()
+tourneyBot = discord.Client()
+
+
+### Print 'I'm in' on connect to discord. 
+@timerBot.event
 async def on_ready():
-    print("I'm in")
-    print(client.user)    
+    print( "\n", ">>> I'm in", "\n")
+    print(timerBot.user)   
 
+#run all the things
+home()
 
+#Start Web Server
 keep_alive()
 
 
-###Timer Calculation
-TimerStr = timerCalc()
+#@bot.command(name="schedule")
+#async def setNextTourneyDT(ctx, arg):
+#  updateNextTourney(arg, )
+#  await ctx.channel.send(f"Tournament Scheduled for 
+#  {updateNextTourney}")
 
 
-### Update bot nickname
-botNameUpdate(TimerStr)
+cToken = os.environ.get("timer_bot_token")
+tToken = os.environ.get("tournament_timer_token")
 
-token = os.environ.get("bot_token")
-client.run(token)
-  
-
-
-# @client.event
-# async def on_message(message):
-#    if message.author != client.user:
-#        await message.channel.send(message.content[::-1])
-
-
-  
-
-
-
+loop = asyncio.get_event_loop()
+loop.create_task(timerBot.start(tToken))
+loop.create_task(tourneyBot.start(cToken))
+loop.run_forever()
