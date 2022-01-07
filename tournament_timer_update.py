@@ -1,57 +1,62 @@
-import requests
 import os
-from update_bot_name import botNameUpdate
-from find_date_difference import find_time_diff
 import pytz
+import requests
+
 from datetime import datetime
 from dateparser import parse as dParse
 from json import dumps
 
-def getServerID(_server):
-
-  if _server == "cr":
-    serverId = '860057024611876865'
-  else:
-    serverId = '911693934231703602'
-  return serverId
+from update_bot_name import botNameUpdate
+from get_server_id import getServerId
+from date_functions import findTimeDiff, makeTimerStr
 
 
 def tournamentTimerUpdate(_server):
-  auth = "Bot " + os.environ.get(str("timer_bot_token"))
+  auth = "Bot " + os.environ.get(str("resetTimerBot"))
 
-  guildId = getServerID(_server)
+  guildId = getServerId(_server)
 
   url = f"https://discordapp.com/api/v9/guilds/{guildId}/scheduled-events"
   headers = {'Authorization': auth, 'Content-Type': 'application/json'}
   
-
-  r = requests.get(url, headers=headers)
-  r.json()
+  try:
+    r = requests.get(url, headers=headers)
+  except requests.exceptions.RequestException as e:
+    print("\n", e, "\n", r.content, "\n")
+    
+    
   # check status code for response received
   # success code - 200
-  print(r)
-
+  print(f"{r}") # \n >>>Events Response Headers: {r.headers}\n")
+  
   response = r.json()
-  response.sort(key = lambda x:x["scheduled_start_time"])
+  #print (dumps(response, indent=4))
 
-  nextStart = dParse(response[0]['scheduled_start_time'])
-  print(f"\n >>>next start {nextStart} \n >>sorted: {dumps(response, indent =4)}\n")
+  try:
+    response.sort(key = lambda x:x["scheduled_start_time"])
 
-  UTC = pytz.timezone('UTC')
-  now = datetime.now(UTC)
-  
-  
-  print(f"\n>>>nextStart: {nextStart}\n")
-  touneyTimeDiff = find_time_diff(now, nextStart)
+    nextStart = dParse(response[0]['scheduled_start_time'])
+    print(f"\n >>>next start {nextStart} \n >>sorted: {dumps(response, indent =4)}\n")
+
+    UTC = pytz.timezone('UTC')
+    now = datetime.now(UTC)
+    
+    
+    print(f"\n>>>nextStart: {nextStart}\n")
+    tourneyTimeDiff = findTimeDiff(now, nextStart)
+    print(f"\n>>>tourneyTimediff: {tourneyTimeDiff}\n")
+
+    tourneyTimeDiff = makeTimerStr(tourneyTimeDiff)
+    print(f"\n>>>tourneyTimediff2: {tourneyTimeDiff}\n")
+
+    botNameUpdate(f"⚔️ {tourneyTimeDiff}","tourneyBot", _server)
 
 
-  print(f"\n>>>tourneyTimediff: {touneyTimeDiff}\n")
+    #print(r.json(), r.content)
 
-  botNameUpdate(f"⚔️ {str(touneyTimeDiff)}","tournament_timer_token", _server)
-
-
-  #print(r.json(), r.content)
-
+  except requests.exceptions.RequestException as e:
+    print("\n", e, "\n", r.content, "\n")
+    return ("! We had an problem getting events from disord")
 
     
 

@@ -1,8 +1,11 @@
 from flask import Flask
 from threading import Thread
+from datetime import datetime
+
 from get_token_values import getTokenValues
 from tournament_timer_update import tournamentTimerUpdate
 from reset_timer_update import resetTimerUpdate
+
 
 
 app = Flask('')
@@ -13,10 +16,10 @@ app = Flask('')
 def home():
     print("\n", ">>> RUNNING HOME", "\n")
     getTokenValues()
-    tournamentTimerUpdate("")
     resetTimerUpdate()
+    tournamentTimerUpdate("test")
 
-    print("\n", ">>> Home Executed", "\n")
+    print(f"\n >>> Home Executed - {datetime.now()} \n")
     return("ok")
  
 

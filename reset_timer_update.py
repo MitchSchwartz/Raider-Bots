@@ -1,8 +1,10 @@
-from datetime import datetime, timedelta
-from find_date_difference import find_time_diff
-import dateparser
 import pytz
+import dateparser
+
+from datetime import datetime, timedelta
+from date_functions import findTimeDiff, makeTimerStr
 from update_bot_name import botNameUpdate
+
 
 
 def resetTimerUpdate():
@@ -15,7 +17,7 @@ def resetTimerUpdate():
   print("\n", "now.weekday(): ", now.weekday(), "\n")
 
   
-    #----------------------------
+  #----------------------------
   ###For Testing timer changeover (reminder: re-enable 'import timedelta')
   
   #print("Testing with TOMORROW's date instead of NOW")
@@ -24,26 +26,25 @@ def resetTimerUpdate():
   #print("Tomorrow: ", tomorrow)
   #now=tomorrow
   #----------------------------
-   
-
+  
 
   #Calculate time difference
   nextReset = dateparser.parse('midnight, CST', settings={'PREFER_DATES_FROM': 'future'})
+  
   #this next line is to adjust the weekday to wednesday
   nextReset -= timedelta(days = nextReset.weekday() -2)
-
   print ("\n", "findNextReset: ", nextReset, "\n")
+ 
+  if (nextReset - now).days < 0:
+      nextReset += timedelta(days = 7)
 
-  daysLeft = 2 - now.weekday() 
-  if daysLeft < 0:
-    daysLeft += 7    
-
-  timeLeft = find_time_diff(now, nextReset)
-
+  timeLeft = findTimeDiff(now, nextReset)
   print("timerStr: ", timeLeft)
-    
+
+
+  timeLeft = makeTimerStr(timeLeft)  
   
   #botNameUpdate("Reset: " + timerStr, "timer_bot_token", "cr")
-  botNameUpdate(f"Reset: {daysLeft}d {str(timeLeft)}", "timer_bot_token", "test")
+  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "test")
 
   #return "timercalc done"

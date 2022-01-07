@@ -1,5 +1,6 @@
 import os
 import requests
+#from json import dumps
 
 def botNameUpdate(_newName, _tokenName, _server):
 
@@ -15,11 +16,12 @@ def botNameUpdate(_newName, _tokenName, _server):
   headers = {'Authorization': auth, 'Content-Type': 'application/json'}
   payload = {'nick': _newName}
 
+
   r = requests.patch(url, json=payload, headers=headers)
   r.json()
-  # check status code for response received
-  # success code - 200
-  print(f"\n>>>Name Update:\n>>>{r}\n>>>{r.content}\n>>>{r.headers}")
+  
+
+  print(f"\n>>>Name Update: {_tokenName}\n>>>{r}\n>>>")#{dumps(r.json(), indent=4)}\n>>>")#{r.headers}")
   
   # print content of request
   print(r.content)
