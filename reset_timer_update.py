@@ -38,13 +38,13 @@ def resetTimerUpdate():
   if (nextReset - now).days < 0:
       nextReset += timedelta(days = 7)
 
-  timeLeft = findTimeDiff(now, nextReset)
+  timeLeft, past = findTimeDiff(now, nextReset)
   print("timerStr: ", timeLeft)
 
 
   timeLeft = makeTimerStr(timeLeft)  
   
-  #botNameUpdate("Reset: " + timerStr, "timer_bot_token", "cr")
+  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "cr")
   botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "test")
+  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "nft.it")
 
-  #return "timercalc done"

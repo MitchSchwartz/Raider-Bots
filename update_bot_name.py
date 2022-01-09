@@ -21,10 +21,10 @@ def botNameUpdate(_newName, _tokenName, _server):
   r.json()
   
 
-  print(f"\n>>>Name Update: {_tokenName}\n>>>{r}\n>>>")#{dumps(r.json(), indent=4)}\n>>>")#{r.headers}")
+  print(f"\n>>>Name Update: {_tokenName} on {_server}\n>>>{r}\n>>>")#{dumps(r.json(), indent=4)}\n>>>")#{r.headers}")
   
   # print content of request
-  print(r.content)
+
 
 
 

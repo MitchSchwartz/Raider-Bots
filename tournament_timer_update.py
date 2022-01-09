@@ -4,7 +4,7 @@ import requests
 
 from datetime import datetime
 from dateparser import parse as dParse
-from json import dumps
+#from json import dumps
 
 from update_bot_name import botNameUpdate
 from get_server_id import getServerId
@@ -22,12 +22,9 @@ def tournamentTimerUpdate(_server):
   try:
     r = requests.get(url, headers=headers)
   except requests.exceptions.RequestException as e:
-    print("\n", e, "\n", r.content, "\n")
+    print(f"\n {e} \n {r.content} \n")
     
-    
-  # check status code for response received
-  # success code - 200
-  print(f"{r}") # \n >>>Events Response Headers: {r.headers}\n")
+  
   
   response = r.json()
   #print (dumps(response, indent=4))
@@ -36,26 +33,30 @@ def tournamentTimerUpdate(_server):
     response.sort(key = lambda x:x["scheduled_start_time"])
 
     nextStart = dParse(response[0]['scheduled_start_time'])
-    print(f"\n >>>next start {nextStart} \n >>sorted: {dumps(response, indent =4)}\n")
+    print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
 
     UTC = pytz.timezone('UTC')
     now = datetime.now(UTC)
     
     
     print(f"\n>>>nextStart: {nextStart}\n")
-    tourneyTimeDiff = findTimeDiff(now, nextStart)
+    tourneyTimeDiff, past = findTimeDiff(now, nextStart)
     print(f"\n>>>tourneyTimediff: {tourneyTimeDiff}\n")
 
     tourneyTimeDiff = makeTimerStr(tourneyTimeDiff)
     print(f"\n>>>tourneyTimediff2: {tourneyTimeDiff}\n")
 
-    botNameUpdate(f"⚔️ {tourneyTimeDiff}","tourneyBot", _server)
+    if past:
+      tourneyTimeDiff = f"- {tourneyTimeDiff}"
+
+    botNameUpdate(f"Duel: {tourneyTimeDiff}","tourneyBot", "test")
+    botNameUpdate(f"Duel: {tourneyTimeDiff}","tourneyBot", "cr")
 
 
     #print(r.json(), r.content)
 
   except requests.exceptions.RequestException as e:
-    print("\n", e, "\n", r.content, "\n")
+    print(f"\n {e} \n {r.content} \n")
     return ("! We had an problem getting events from disord")
 
     
