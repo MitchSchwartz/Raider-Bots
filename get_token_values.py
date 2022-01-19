@@ -1,14 +1,21 @@
 import os
 import requests
 #from time import sleep
+#from .bot import Bot
+#from bots_online import botList
 from update_bot_name import botNameUpdate
-from json import dumps
+#from json import dumps
 #from get_server_id import serverList
 
-tokenList = ["RAIDER","AURUM2","GRIMWEED"]
+tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT"]
 
+def priceInAurum(_tokenPrice, _aurumPrice):
+  int(float(_tokenPrice))
+  int(float(_aurumPrice))
+  _tokenPrice /= _aurumPrice
+  return _tokenPrice
 
-def getTokenValues():
+def getTokenValues(_test):
   
   auth = os.environ.get("nomicsKey")
   ids = (','.join(tokenList))
@@ -21,7 +28,7 @@ def getTokenValues():
     print(f"\n>>> Nomics response: {r} \n")# {dumps(r.json())}")
 
   except requests.exceptions.RequestException as e:
-    print("\n", e, "\n", dumps(r.content), "\n")
+    print(f"\n {e}")# "\n", dumps(r.content), "\n")
   
 
 
@@ -41,7 +48,11 @@ def getTokenValues():
     if r.json()[i]['currency'] == "GRIMWEED":
       gP = r.json()[i]['price']
 
-      print("\n", ">>> gP:", gP, "\n")
+       
+    if r.json()[i]['currency'] == "NEWT":
+      nP = r.json()[i]['price']
+
+     # print("\n", ">>> gP:", gP, "\n")
 
     i += 1
 
@@ -50,52 +61,86 @@ def getTokenValues():
   aurumPrice = "{:10.4f}".format(float(aP))
 
   raiderPrice = "{:10.2f}".format(float(rP))
-
+  
+  #gP = priceInAurum(gP, aurumPrice)
   grimweedPrice = "{:10.2f}".format(float(gP))
 
+  newtPrice = "{:10.2f}".format(float(nP))
+
   
-  print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} Grimweed: {grimweedPrice} \n")
+  #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
 
-
-
+  
+  
   print("\n>>>Updating Aurum - TEST", "\n")
-  botNameUpdate(f"AURUM | ${aurumPrice}", "aurumBot", "test")
+  botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "test")
   
-  print("\n>>> Updating Aurum - CR", "\n")
-  botNameUpdate(f"AURUM | ${aurumPrice}", "aurumBot", "cr")
+  if (not _test):
+    print("\n>>> Updating Aurum - CR", "\n")
+    botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "cr")
 
-  print("\n>>> Updating Aurum - NFT.IT", "\n")
-  botNameUpdate(f"AURUM | ${aurumPrice}", "aurumBot", "nft.it")
+    print("\n>>> Updating Aurum - NFT.IT", "\n")
+    botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "nft.it")
 
 
 
   print("\n>>> Updating Raider - TEST", "\n")
-  botNameUpdate(f"RAIDER | ${raiderPrice}", "raiderBot", "test" )
+  botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "test" )
 
-  print("\n>>> Updating Raider - CR", "\n")
-  botNameUpdate(f"RAIDER | ${raiderPrice}", "raiderBot", "cr" )
+  if (not _test):
+    print("\n>>> Updating Raider - CR", "\n")
+    botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "cr" )
 
-  print("\n>>> Updating Raider - NFT.IT", "\n")
-  botNameUpdate(f"RAIDER | ${raiderPrice}", "raiderBot", "nft.it" )
+    print("\n>>> Updating Raider - NFT.IT", "\n")
+    botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "nft.it" )
 
+  
 
   print("\n>>> Updating Grimweed - TEST", "\n")
-  botNameUpdate(f"G-WEED | ${grimweedPrice}", "grimweedBot", "test" )
+  botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "test" )
 
-  print("\n>>> Updating Grimweed - CR", "\n")
-  botNameUpdate(f"G-WEED | ${grimweedPrice}", "grimweedBot", "cr" )
+  if (not _test):
+    print("\n>>> Updating Grimweed - CR", "\n")
+    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "cr" )  
+
+    print("\n>>> Updating Grimweed - CR", "\n")
+    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "nft.it" )
 
 
   
+  print("\n>>>Updating Eye of Newt - TEST", "\n")
+  botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "test")  
+  
 
-'''
-  for x in [serverList]:
+  if (not _test):
+    print("\n>>> Updating Aurum - CR", "\n")
+    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "cr")
+    '''
+    print("\n>>> Updating Aurum - NFT.IT", "\n")
+    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "nft.it")
+  
+  
+  
+  #testStatus(grimweedPrice) 
+  
+  for key in botList:
+    if (botlist[key].isToken):
+      print(f"\n>>> Updating {botList[key].name} - {key}", "\n")
+      botNameUpdate(f"G-WEED | ${botList[key].price}", botList[key].token, "test")  
+      print(f"{botList[key].name} - botList[key].price Updated")
+
+  
+  
+  for x in serverList:
     print(f"\n>>> Updating Grimweed - {x}", "\n")
-    botNameUpdate(f"G-WEED | ${grimweedPrice}", "grimweedBot", x )  
-    print(x)
-'''
-  
+    botNameUpdate(f"G-WEED | ${grimweedPrice}", "grimweedBot", x)  
+    print(f"{x} - grimweed Updated")
 
+  for x in serverList:
+    print(f"\n>>> Updating Aurum - {x}", "\n")
+    botNameUpdate(f"Aurum | ${aurumPrice}", aurumBot.token, x)  
+    print(f"{x} - Aurumbot Updated")
+  '''
 
 
 

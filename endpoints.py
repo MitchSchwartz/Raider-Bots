@@ -15,7 +15,7 @@ app = Flask('')
 # pinged every minute by https://console.cron-job.org/dashboard
 def home():
     print("\n", ">>> RUNNING HOME", "\n")
-    getTokenValues()
+    getTokenValues(False)
     resetTimerUpdate()
     tournamentTimerUpdate("cr")
 
@@ -37,7 +37,7 @@ def run():
     app.run(host='0.0.0.0',port=8080)
 
 
-def keep_alive():
+def startFlask():
     t = Thread(target=run)
     t.start()
 
