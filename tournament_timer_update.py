@@ -9,6 +9,7 @@ from dateparser import parse as dParse
 from update_bot_name import botNameUpdate
 from get_server_id import getServerId, serverList
 from date_functions import findTimeDiff, makeTimerStr
+from test_mode import testMode, liveOnly
 
 
 
@@ -75,7 +76,14 @@ def tournamentTimerUpdate(_server):
   newBotName = tourneyTimeDiff(nextStart)
   
   for x in serverList:
-    botNameUpdate(f"Event: {newBotName}","tourneyBot", x)
+    if (x == "test" and liveOnly):
+      continue
+
+    if (x != "test" and testMode):
+      continue
+    
+    else:
+      botNameUpdate(f"Event: {newBotName}","tourneyBot", x)
     
   print("bot names updated")
 

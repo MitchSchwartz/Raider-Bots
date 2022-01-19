@@ -1,5 +1,6 @@
 import os
 import requests
+from test_mode import testMode, liveOnly
 #from time import sleep
 #from .bot import Bot
 #from bots_online import botList
@@ -71,11 +72,11 @@ def getTokenValues(_test):
   #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
 
   
+  if (not liveOnly):
+    print("\n>>>Updating Aurum - TEST", "\n")
+    botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "test")
   
-  print("\n>>>Updating Aurum - TEST", "\n")
-  botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "test")
-  
-  if (not _test):
+  if (not testMode):
     print("\n>>> Updating Aurum - CR", "\n")
     botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "cr")
 
@@ -83,11 +84,11 @@ def getTokenValues(_test):
     botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "nft.it")
 
 
+  if (not liveOnly):
+    print("\n>>> Updating Raider - TEST", "\n")
+    botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "test" )
 
-  print("\n>>> Updating Raider - TEST", "\n")
-  botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "test" )
-
-  if (not _test):
+  if (not testMode):
     print("\n>>> Updating Raider - CR", "\n")
     botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "cr" )
 
@@ -95,11 +96,11 @@ def getTokenValues(_test):
     botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "nft.it" )
 
   
+  if (not liveOnly):
+    print("\n>>> Updating Grimweed - TEST", "\n")
+    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "test" )
 
-  print("\n>>> Updating Grimweed - TEST", "\n")
-  botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "test" )
-
-  if (not _test):
+  if (not testMode):
     print("\n>>> Updating Grimweed - CR", "\n")
     botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "cr" )  
 
@@ -107,12 +108,12 @@ def getTokenValues(_test):
     botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "nft.it" )
 
 
-  
-  print("\n>>>Updating Eye of Newt - TEST", "\n")
-  botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "test")  
+  if (not liveOnly):
+    print("\n>>>Updating Eye of Newt - TEST", "\n")
+    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "test")  
   
 
-  if (not _test):
+  if (not testMode):
     print("\n>>> Updating Aurum - CR", "\n")
     botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "cr")
     '''
