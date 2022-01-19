@@ -17,7 +17,7 @@ def home():
     print("\n", ">>> RUNNING HOME", "\n")
     getTokenValues(False)
     resetTimerUpdate()
-    tournamentTimerUpdate("cr")
+    #tournamentTimerUpdate("cr")
 
     print(f"\n >>> Home Executed - {datetime.now()} \n")
     return("ok")

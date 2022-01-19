@@ -11,10 +11,10 @@ from update_bot_name import botNameUpdate
 tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT"]
 
 def priceInAurum(_tokenPrice, _aurumPrice):
-  int(float(_tokenPrice))
-  int(float(_aurumPrice))
-  _tokenPrice /= _aurumPrice
-  return _tokenPrice
+
+  price = float(_tokenPrice) / float(_aurumPrice)
+  return price
+
 
 def getTokenValues(_test):
   
@@ -63,10 +63,11 @@ def getTokenValues(_test):
 
   raiderPrice = "{:10.2f}".format(float(rP))
   
-  #gP = priceInAurum(gP, aurumPrice)
-  grimweedPrice = "{:10.2f}".format(float(gP))
+  gPaP = priceInAurum(gP, aurumPrice)
+  grimweedPrice = "{:10.2f}".format(float(gPaP))
 
-  newtPrice = "{:10.2f}".format(float(nP))
+  nPaP = priceInAurum(nP, aurumPrice)
+  newtPrice = "{:10.2f}".format(float(nPaP))
 
   
   #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
@@ -98,28 +99,28 @@ def getTokenValues(_test):
   
   if (not liveOnly):
     print("\n>>> Updating Grimweed - TEST", "\n")
-    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "test" )
+    botNameUpdate(f"Grmw | {grimweedPrice} AR", "grimweedBot", "test" )
 
   if (not testMode):
     print("\n>>> Updating Grimweed - CR", "\n")
-    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "cr" )  
+    botNameUpdate(f"Grmw | {grimweedPrice} AR", "grimweedBot", "cr" )  
 
     print("\n>>> Updating Grimweed - CR", "\n")
-    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "nft.it" )
+    botNameUpdate(f"Grmw | {grimweedPrice} AR", "grimweedBot", "nft.it" )
 
 
   if (not liveOnly):
     print("\n>>>Updating Eye of Newt - TEST", "\n")
-    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "test")  
+    botNameUpdate(f"Newt | {newtPrice} AR", "eyeOfNewtBot", "test")  
   
 
   if (not testMode):
     print("\n>>> Updating Aurum - CR", "\n")
-    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "cr")
-    '''
+    botNameUpdate(f"Newt  | {newtPrice} AR", "eyeOfNewtBot", "cr")
+    
     print("\n>>> Updating Aurum - NFT.IT", "\n")
-    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "nft.it")
-  
+    botNameUpdate(f"Newt  | {newtPrice} AR", "eyeOfNewtBot", "nft.it")
+  '''
   
   
   #testStatus(grimweedPrice) 
