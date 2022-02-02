@@ -1,6 +1,6 @@
 import os
 import requests
-#import discord
+import discord
 from test_mode import testMode, liveOnly
 #from time import sleep
 #from .bot import Bot
@@ -100,83 +100,6 @@ def getTokenValues():
     print(f"{x} - Newt Updated")
 
 
-
-  #to delete below 2022-02-02
-  
-  #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
-
-
-
-  '''  if (not liveOnly):
-    for x in serverList:
-        print("\n>>>Updating Aurum - TEST", "\n")
-        botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "test")'''
-
-
-  #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='to Your Commands!'))
-  '''
-
-  if (not liveOnly):
-    print("\n>>>Updating Aurum - TEST", "\n")
-    botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "test")
-    
-  
-  if (not testMode):
-    print("\n>>> Updating Aurum - CR", "\n")
-    botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "cr")
-
-    print("\n>>> Updating Aurum - NFT.IT", "\n")
-    botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "nft.it")
-
-
-  if (not liveOnly):
-    print("\n>>> Updating Raider - TEST", "\n")
-    botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "test" )
-
-  if (not testMode):
-    print("\n>>> Updating Raider - CR", "\n")
-    botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "cr" )
-
-    print("\n>>> Updating Raider - NFT.IT", "\n")
-    botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", "nft.it" )
-
-  
-  if (not liveOnly):
-    print("\n>>> Updating Grimweed - TEST", "\n")
-    botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", "test" )
-
-  if (not testMode):
-    print("\n>>> Updating Grimweed - CR", "\n")
-    botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", "cr" )  
-
-    print("\n>>> Updating Grimweed - NFT.IT", "\n")
-    botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", "nft.it" )
-
-
-  if (not liveOnly):
-    print("\n>>>Updating Eye of Newt - TEST", "\n")
-    botNameUpdate(f"Newt | {newtPrice} AUR", "eyeOfNewtBot", "test")  
-  
-
-  if (not testMode):
-    print("\n>>> Updating Eye of Newt - CR", "\n")
-    botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", "cr")
-    
-    print("\n>>> Updating Eye of Newt - NFT.IT", "\n")
-    botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", "nft.it")
-  
-  
-  
-  #testStatus(grimweedPrice) 
-  
-  for key in botList:
-    if (botlist[key].isToken):
-      print(f"\n>>> Updating {botList[key].name} - {key}", "\n")
-      botNameUpdate(f"G-WEED | ${botList[key].price}", botList[key].token, "test")  
-      print(f"{botList[key].name} - botList[key].price Updated")
-'''
-  
-  
   
 
 

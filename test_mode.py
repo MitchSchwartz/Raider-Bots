@@ -1,4 +1,4 @@
-testMode = False
+testMode = True
 liveOnly = False
 
 def setTestMode(_value):

@@ -96,10 +96,10 @@ def tournamentTimerUpdate(_server):
     
 
   for x in serverList:
-    if (x == "test" and liveOnly):
+    if (liveOnly and x == "test"):
       continue
 
-    if (x != "test" and testMode):
+    if (testMode and x != "test"):
       continue
     
     else:
