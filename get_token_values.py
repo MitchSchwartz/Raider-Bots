@@ -1,22 +1,24 @@
 import os
 import requests
+#import discord
 from test_mode import testMode, liveOnly
 #from time import sleep
 #from .bot import Bot
 #from bots_online import botList
 from update_bot_name import botNameUpdate
-#from json import dumps
-#from get_server_id import serverList
+import json 
+from get_server_id import serverList
 
 tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT"]
 
-def priceInAurum(_tokenPrice, _aurumPrice):
-  int(float(_tokenPrice))
-  int(float(_aurumPrice))
-  _tokenPrice /= _aurumPrice
-  return _tokenPrice
 
-def getTokenValues(_test):
+def priceInAurum(_tokenPrice, _aurumPrice):
+
+  price = float(_tokenPrice) / float(_aurumPrice)
+  return price
+
+
+def getTokenValues():
   
   auth = os.environ.get("nomicsKey")
   ids = (','.join(tokenList))
@@ -31,7 +33,11 @@ def getTokenValues(_test):
   except requests.exceptions.RequestException as e:
     print(f"\n {e}")# "\n", dumps(r.content), "\n")
   
+  nomicsResults = r.json()
 
+  print(f"\n>>>Nomics Results: {json.dumps(nomicsResults)}")
+
+  
 
   i=0
 
@@ -63,18 +69,57 @@ def getTokenValues(_test):
 
   raiderPrice = "{:10.2f}".format(float(rP))
   
-  #gP = priceInAurum(gP, aurumPrice)
-  grimweedPrice = "{:10.2f}".format(float(gP))
+  gPaP = priceInAurum(gP, aurumPrice)
+  grimweedPrice = "{:10.2f}".format(float(gPaP))
 
-  newtPrice = "{:10.2f}".format(float(nP))
+  nPaP = priceInAurum(nP, aurumPrice)
+  newtPrice = "{:10.2f}".format(float(nPaP))
 
+
+  _serverList = serverList
+
+  if (testMode):
+    _serverList = ["test"]   
+  
+  for x in _serverList:    
+  
+    print(f"\n>>> Updating Aurum - {x}", "\n")
+    botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", x)  
+    print(f"{x} - Aurumbot Updated")
+    
+    print("\n>>> Updating Raider - {x}", "\n")
+    botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", x )
+    print(f"{x} - RaiderBot Updated")
+
+    print(f"\n>>> Updating Grimweed - {x}", "\n")
+    botNameUpdate(f"G-WEED | ${grimweedPrice}", "grimweedBot", x)  
+    print(f"{x} - Grimweed Updated")
+
+    print("\n>>> Updating Eye of Newt - {x}", "\n")
+    botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", x)
+    print(f"{x} - Newt Updated")
+
+
+
+  #to delete below 2022-02-02
   
   #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
 
-  
+
+
+  '''  if (not liveOnly):
+    for x in serverList:
+        print("\n>>>Updating Aurum - TEST", "\n")
+        botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "test")'''
+
+
+  #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='to Your Commands!'))
+  '''
+
   if (not liveOnly):
     print("\n>>>Updating Aurum - TEST", "\n")
     botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", "test")
+    
   
   if (not testMode):
     print("\n>>> Updating Aurum - CR", "\n")
@@ -98,27 +143,27 @@ def getTokenValues(_test):
   
   if (not liveOnly):
     print("\n>>> Updating Grimweed - TEST", "\n")
-    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "test" )
+    botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", "test" )
 
   if (not testMode):
     print("\n>>> Updating Grimweed - CR", "\n")
-    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "cr" )  
+    botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", "cr" )  
 
-    print("\n>>> Updating Grimweed - CR", "\n")
-    botNameUpdate(f"Grmw | ${grimweedPrice}", "grimweedBot", "nft.it" )
+    print("\n>>> Updating Grimweed - NFT.IT", "\n")
+    botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", "nft.it" )
 
 
   if (not liveOnly):
     print("\n>>>Updating Eye of Newt - TEST", "\n")
-    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "test")  
+    botNameUpdate(f"Newt | {newtPrice} AUR", "eyeOfNewtBot", "test")  
   
 
   if (not testMode):
-    print("\n>>> Updating Aurum - CR", "\n")
-    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "cr")
-    '''
-    print("\n>>> Updating Aurum - NFT.IT", "\n")
-    botNameUpdate(f"Newt | ${newtPrice}", "eyeOfNewtBot", "nft.it")
+    print("\n>>> Updating Eye of Newt - CR", "\n")
+    botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", "cr")
+    
+    print("\n>>> Updating Eye of Newt - NFT.IT", "\n")
+    botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", "nft.it")
   
   
   
@@ -129,19 +174,10 @@ def getTokenValues(_test):
       print(f"\n>>> Updating {botList[key].name} - {key}", "\n")
       botNameUpdate(f"G-WEED | ${botList[key].price}", botList[key].token, "test")  
       print(f"{botList[key].name} - botList[key].price Updated")
-
+'''
   
   
-  for x in serverList:
-    print(f"\n>>> Updating Grimweed - {x}", "\n")
-    botNameUpdate(f"G-WEED | ${grimweedPrice}", "grimweedBot", x)  
-    print(f"{x} - grimweed Updated")
-
-  for x in serverList:
-    print(f"\n>>> Updating Aurum - {x}", "\n")
-    botNameUpdate(f"Aurum | ${aurumPrice}", aurumBot.token, x)  
-    print(f"{x} - Aurumbot Updated")
-  '''
+  
 
 
 

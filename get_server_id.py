@@ -1,23 +1,16 @@
 from test_mode import testMode
 
-serverList = ["cr", "test", "nft.it"]
+serverList = {
+  "cr": 860057024611876865,
+  "test": 911693934231703602,
+  "nft.it":718772483729391716,
+  "believers":830224973216874516
+  }
 
 
 
 def getServerId(_server):
-
-  if (testMode):
-    serverId = '911693934231703602'
-
-  else:  
-
-    if _server == "cr":
-      serverId = '860057024611876865'
-
-    elif _server == "nft.it":
-      serverId = '718772483729391716'
-    
-    else:
-      serverId = '911693934231703602'
+  if (not _server or testMode):
+    return serverList["test"]
   
-  return serverId
+  return (serverList[_server])

@@ -17,7 +17,7 @@ def botsOnline():
       self.isToken = _isToken
       self.price = 0
             
-      print(f"\n>>> New Bot: {self.name}")
+      print(f"\n>>> New Bot: {self.name}\n")
 
 
   botList = {  
