@@ -1,7 +1,7 @@
 import os
 import requests
-import discord
-from test_mode import testMode, liveOnly
+#import discord
+#from test_mode import testMode, liveOnly
 #from time import sleep
 #from .bot import Bot
 #from bots_online import botList
@@ -72,16 +72,21 @@ def getTokenValues():
   gPaP = priceInAurum(gP, aurumPrice)
   grimweedPrice = "{:10.2f}".format(float(gPaP))
 
+
   nPaP = priceInAurum(nP, aurumPrice)
   newtPrice = "{:10.2f}".format(float(nPaP))
 
+  
+  #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
 
+  
   _serverList = serverList
 
   if (testMode):
     _serverList = ["test"]   
   
   for x in _serverList:    
+
   
     print(f"\n>>> Updating Aurum - {x}", "\n")
     botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", x)  
