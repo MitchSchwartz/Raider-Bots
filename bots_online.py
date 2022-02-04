@@ -26,7 +26,8 @@ def botsOnline():
     "grimweedBot" : Bot("grimweedBot", True),
     "tourneyBot" : Bot("tourneyBot", False),
     "resetTimerBot" : Bot("resetTimerBot", False),
-    "eyeOfNewtBot" : Bot("eyeOfNewtBot", True)
+    "eyeOfNewtBot" : Bot("eyeOfNewtBot", True),
+    "mhpBot" : Bot("mhpBot", True)
   }
     
     #Get Bots Online

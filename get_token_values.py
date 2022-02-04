@@ -1,7 +1,7 @@
 import os
 import requests
 #import discord
-#from test_mode import testMode, liveOnly
+from test_mode import testMode
 #from time import sleep
 #from .bot import Bot
 #from bots_online import botList
@@ -9,7 +9,7 @@ from update_bot_name import botNameUpdate
 import json 
 from get_server_id import serverList
 
-tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT"]
+tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT"]#,"mhp2-minor-health-potion"]
 
 
 def priceInAurum(_tokenPrice, _aurumPrice):
@@ -59,6 +59,9 @@ def getTokenValues():
     if r.json()[i]['currency'] == "NEWT":
       nP = r.json()[i]['price']
 
+    # if r.json()[i]['currency'] == "mhp2-minor-health-potion":
+    #   mP = r.json()[i]['price']
+
      # print("\n", ">>> gP:", gP, "\n")
 
     i += 1
@@ -76,6 +79,9 @@ def getTokenValues():
   nPaP = priceInAurum(nP, aurumPrice)
   newtPrice = "{:10.2f}".format(float(nPaP))
 
+  # mPaP = priceInAurum(mP, aurumPrice)
+  # mhpPrice = "{:10.2f}".format(float(mPaP))
+
   
   #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
 
@@ -85,24 +91,33 @@ def getTokenValues():
   if (testMode):
     _serverList = ["test"]   
   
-  for x in _serverList:    
+  print(f"\n>>>testMode: {testMode}")
 
+    
+  print(f"\n>>>serverList: {_serverList}")
+
+  for x in _serverList:    
+    print(f"\n>>>x: {x}")
   
     print(f"\n>>> Updating Aurum - {x}", "\n")
     botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", x)  
     print(f"{x} - Aurumbot Updated")
     
-    print("\n>>> Updating Raider - {x}", "\n")
+    print(f"\n>>> Updating Raider - {x}", "\n")
     botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", x )
     print(f"{x} - RaiderBot Updated")
 
     print(f"\n>>> Updating Grimweed - {x}", "\n")
-    botNameUpdate(f"G-WEED | ${grimweedPrice}", "grimweedBot", x)  
+    botNameUpdate(f"Grmwd | {grimweedPrice} AUR", "grimweedBot", x)  
     print(f"{x} - Grimweed Updated")
 
     print("\n>>> Updating Eye of Newt - {x}", "\n")
     botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", x)
     print(f"{x} - Newt Updated")
+    
+    # print("\n>>> Updating MHP - {x}", "\n")
+    # botNameUpdate(f"MHP  | {mhpPrice} AUR", "mhpBot", x)
+    # print(f"{x} - MHP Updated")
 
 
   
