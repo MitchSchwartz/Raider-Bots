@@ -20,7 +20,7 @@ crashtest==0.3.1
 cryptography==3.4.8
 cs50==7.0.2
 cycler==0.10.0
-dateparser 1.1.0
+dateparser == 1.1.0
 debugpy==1.2.1
 discord == 1.7.3
 discord.py == 1.7.3
