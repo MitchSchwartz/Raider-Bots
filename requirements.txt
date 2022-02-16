@@ -87,7 +87,6 @@ python-jsonrpc-server==0.3.2
 python-language-server==0.31.10
 pytz file:///home/runner/.cache/pypoetry/artifacts/07/c1/43/6f22a533e7bc5e277f10b4c6033e936ff7bbeb6464e5f27dbfb6c641d7/pytz-2021.3-py2.py3-none-any.whl
 pytz-deprecation-shim file:///home/runner/.cache/pypoetry/artifacts/76/16/7b/4d1ca0f1ad2780cff55cac2a295ab01207736e7bf115be1a2a4a692ec6/pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl
-pyxel  git+https://github.com/amasad/pyxel
 referenceqvm==0.3
 regex  file:///home/runner/.cache/pypoetry/artifacts/99/49/44/9e9bdf5b6623cac1346bb318ca75bf62060573491a64c8957808268c26/regex-2022.1.18-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 replit==3.2.4
