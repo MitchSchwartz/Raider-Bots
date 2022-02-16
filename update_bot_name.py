@@ -2,9 +2,7 @@ import os
 import requests
 
 from get_server_id import getServerId
-
-
-#from json import dumps
+from json import dumps
 
 
 def botNameUpdate(_newName, _tokenName, _server):
@@ -17,21 +15,18 @@ def botNameUpdate(_newName, _tokenName, _server):
   payload = {'nick': _newName}
 
 
-  r = requests.patch(url, json=payload, headers=headers)
-  r.json()
+  try:  
+    r = requests.patch(url, json=payload, headers=headers)
+    #r.json()
+    print(f"\n>>>Name Update: {_tokenName} on {_server}\n>>>{r}\n", "\n", dumps(r.json(), indent=4))#, "\n>>> {r.headers}")
+
+
+  except requests.exceptions.RequestException as e:
+    print(f"\n {e} \n {r.content} \n")
   
 
-  print(f"\n>>>Name Update: {_tokenName} on {_server}\n>>>{r}\n")#>>>{dumps(r.json(), indent=4)}\n>>>")#{r.headers}")
 
   
-'''
 
-import discord
-import asyncio
-from bots_online import botList
-
-async def testStatus(_status):
-  await botList[2].change_presence(activity = discord.Activity(type = discord.ActivityType.watching, name = (_status)))
-'''
 
 

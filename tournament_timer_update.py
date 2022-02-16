@@ -7,7 +7,7 @@ from datetime import datetime
 from dateparser import parse as dParse
 #from json import dumps
 
-from operator import itemgetter
+#from operator import itemgetter
 from update_bot_name import botNameUpdate
 from get_server_id import getServerId, serverList
 from date_functions import findTimeDiff, makeTimerStr
@@ -103,7 +103,10 @@ def tournamentTimerUpdate(_server):
       continue
     
     else:
-      botNameUpdate(newBotName, "tourneyBot", x)
+      try:
+        botNameUpdate(newBotName, "tourneyBot", x)
+      except requests.exceptions.RequestException as e:
+        print(f"\n {e} \n {r.content} \n")
     
   print("bot names updated")
 

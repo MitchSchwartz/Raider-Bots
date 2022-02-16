@@ -9,7 +9,7 @@ from update_bot_name import botNameUpdate
 import json 
 from get_server_id import serverList
 
-tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT"]#,"mhp2-minor-health-potion"]
+tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT","MHP2"]
 
 
 def priceInAurum(_tokenPrice, _aurumPrice):
@@ -33,24 +33,23 @@ def getTokenValues():
   except requests.exceptions.RequestException as e:
     print(f"\n {e}")# "\n", dumps(r.content), "\n")
   
-  nomicsResults = r.json()
+  #nomicsResults = r.json()
 
-  print(f"\n>>>Nomics Results: {json.dumps(nomicsResults)}")
+  #print(f"\n>>>Nomics Results: {json.dumps(nomicsResults)}")
 
-  
+  #print(len(json.loads(r.text)))
 
   i=0
 
-  while i < len(tokenList):  
+  while i < len(json.loads(r.text)): 
+     
     if r.json()[i]['currency'] == "AURUM2":
       aP = r.json()[i]['price']
 
-      print("\n", ">>> aP:", aP, "\n")
 
     if r.json()[i]['currency'] == "RAIDER":
       rP = r.json()[i]['price']
 
-      print("\n", ">>> rP:", rP, "\n")
     
     if r.json()[i]['currency'] == "GRIMWEED":
       gP = r.json()[i]['price']
@@ -59,11 +58,10 @@ def getTokenValues():
     if r.json()[i]['currency'] == "NEWT":
       nP = r.json()[i]['price']
 
-    # if r.json()[i]['currency'] == "mhp2-minor-health-potion":
-    #   mP = r.json()[i]['price']
+    if r.json()[i]['currency'] == "MHP2":
+      mP = r.json()[i]['price']
 
-     # print("\n", ">>> gP:", gP, "\n")
-
+   
     i += 1
 
 
@@ -79,11 +77,11 @@ def getTokenValues():
   nPaP = priceInAurum(nP, aurumPrice)
   newtPrice = "{:10.2f}".format(float(nPaP))
 
-  # mPaP = priceInAurum(mP, aurumPrice)
-  # mhpPrice = "{:10.2f}".format(float(mPaP))
+  mPaP = priceInAurum(mP, aurumPrice)
+  mhpPrice = "{:10.2f}".format(float(mPaP))
 
   
-  #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
+  print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
 
   
   _serverList = serverList
@@ -108,16 +106,16 @@ def getTokenValues():
     print(f"{x} - RaiderBot Updated")
 
     print(f"\n>>> Updating Grimweed - {x}", "\n")
-    botNameUpdate(f"Grmwd | {grimweedPrice} AUR", "grimweedBot", x)  
+    botNameUpdate(f"grmw | {grimweedPrice} AUR", "grimweedBot", x)  
     print(f"{x} - Grimweed Updated")
 
-    print("\n>>> Updating Eye of Newt - {x}", "\n")
+    print(f"\n>>> Updating Eye of Newt - {x}", "\n")
     botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", x)
     print(f"{x} - Newt Updated")
     
-    # print("\n>>> Updating MHP - {x}", "\n")
-    # botNameUpdate(f"MHP  | {mhpPrice} AUR", "mhpBot", x)
-    # print(f"{x} - MHP Updated")
+    print(f"\n>>> Updating MHP - {x}", "\n")
+    botNameUpdate(f"MHP  | {mhpPrice} AUR", "mhpBot", x)
+    print(f"{x} - MHP Updated")
 
 
   

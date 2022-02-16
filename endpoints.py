@@ -17,10 +17,10 @@ def home():
     print("\n", ">>> RUNNING HOME", "\n")
     getTokenValues()
     resetTimerUpdate()
-    #tournamentTimerUpdate("cr")
+    tournamentTimerUpdate("cr")
 
     print(f"\n >>> Home Executed - {datetime.now()} \n")
-    return("ok")
+    return('ok')
  
 
 @app.route('/tokenbots')
