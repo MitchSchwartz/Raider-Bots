@@ -3,8 +3,6 @@
 [packages]
 
 pylint = "*"
-rope = "*"
-pyusb = "*"
 discord = "*"
 asyncio = "*"
 os = "*"
