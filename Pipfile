@@ -1,12 +1,7 @@
 [dev-packages]
 
 [packages]
-nose = "*"
-requests = "*"
-pymysql = "*"
-paho-mqtt = "*"
-opencv-python = "*"
-matplotlib = "*"
+
 pylint = "*"
 rope = "*"
 pyusb = "*"
