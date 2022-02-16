@@ -3,7 +3,7 @@ aiohttp==3.7.4.post0
 antlr4-python3-runtime==4.9.2
 astunparse==1.6.3
 async-timeout==3.0.1
-attrs @ file:///home/runner/.cache/pypoetry/artifacts/9a/27/ab/6895b786f345452394b42c1fdbe863803d0396e675b632c01cb13cad92/attrs-21.4.0-py2.py3-none-any.whl
+attrs == 21.4.0
 backports.entry-points-selectable==1.1.0
 backports.zoneinfo @ file:///home/runner/.cache/pypoetry/artifacts/aa/b4/b4/7a4329bc0b3589a13e82474586b62709ce2f876aef24a34bcc3f685bb0/backports.zoneinfo-0.2.1-cp38-cp38-manylinux1_x86_64.whl
 CacheControl==0.12.6
