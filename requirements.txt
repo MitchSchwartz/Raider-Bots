@@ -3,9 +3,9 @@ aiohttp==3.7.4.post0
 antlr4-python3-runtime==4.9.2
 astunparse==1.6.3
 async-timeout==3.0.1
-attrs @ file:///home/runner/.cache/pypoetry/artifacts/9a/27/ab/6895b786f345452394b42c1fdbe863803d0396e675b632c01cb13cad92/attrs-21.4.0-py2.py3-none-any.whl
+attrs  file:///home/runner/.cache/pypoetry/artifacts/9a/27/ab/6895b786f345452394b42c1fdbe863803d0396e675b632c01cb13cad92/attrs-21.4.0-py2.py3-none-any.whl
 backports.entry-points-selectable==1.1.0
-backports.zoneinfo @ file:///home/runner/.cache/pypoetry/artifacts/aa/b4/b4/7a4329bc0b3589a13e82474586b62709ce2f876aef24a34bcc3f685bb0/backports.zoneinfo-0.2.1-cp38-cp38-manylinux1_x86_64.whl
+backports.zoneinfo  file:///home/runner/.cache/pypoetry/artifacts/aa/b4/b4/7a4329bc0b3589a13e82474586b62709ce2f876aef24a34bcc3f685bb0/backports.zoneinfo-0.2.1-cp38-cp38-manylinux1_x86_64.whl
 CacheControl==0.12.6
 cachetools==4.2.2
 cachy==0.3.0
@@ -14,21 +14,21 @@ cffi==1.14.6
 chardet==4.0.0
 charset-normalizer==2.0.4
 cleo==0.8.1
-click @ file:///home/runner/.cache/pypoetry/artifacts/3c/f6/a3/2262df8f5a6f3de5bbc78cc13803c60524c8384dce76661fdfe3df975f/click-8.0.3-py3-none-any.whl
+click  file:///home/runner/.cache/pypoetry/artifacts/3c/f6/a3/2262df8f5a6f3de5bbc78cc13803c60524c8384dce76661fdfe3df975f/click-8.0.3-py3-none-any.whl
 clikit==0.6.2
 crashtest==0.3.1
 cryptography==3.4.8
 cs50==7.0.2
 cycler==0.10.0
-dateparser @ file:///home/runner/.cache/pypoetry/artifacts/f9/7f/2c/3bc024b6363a494db1e80555878cc65ed2a75b0e7fdab0279cf5c90367/dateparser-1.1.0-py2.py3-none-any.whl
+dateparser  file:///home/runner/.cache/pypoetry/artifacts/f9/7f/2c/3bc024b6363a494db1e80555878cc65ed2a75b0e7fdab0279cf5c90367/dateparser-1.1.0-py2.py3-none-any.whl
 debugpy==1.2.1
-discord @ file:///home/runner/.cache/pypoetry/artifacts/2a/dc/46/ea51f1b99fab3043473352404824cf8774020f4ef65ef7e8985e928ce3/discord-1.7.3-py3-none-any.whl
-discord.py @ file:///home/runner/.cache/pypoetry/artifacts/93/3d/7e/a71579025e378cc8608f84db0999aa01171575fc9bd9078988d8520a75/discord.py-1.7.3-py3-none-any.whl
+discord  file:///home/runner/.cache/pypoetry/artifacts/2a/dc/46/ea51f1b99fab3043473352404824cf8774020f4ef65ef7e8985e928ce3/discord-1.7.3-py3-none-any.whl
+discord.py file:///home/runner/.cache/pypoetry/artifacts/93/3d/7e/a71579025e378cc8608f84db0999aa01171575fc9bd9078988d8520a75/discord.py-1.7.3-py3-none-any.whl
 distlib==0.3.2
-django-timezone @ file:///home/runner/.cache/pypoetry/artifacts/64/da/45/195a12243ef2c37f04d78723ce4c39c767670ed6dfefc5016cade9568d/django_timezone-0.3-py2.py3-none-any.whl
+django-timezone file:///home/runner/.cache/pypoetry/artifacts/64/da/45/195a12243ef2c37f04d78723ce4c39c767670ed6dfefc5016cade9568d/django_timezone-0.3-py2.py3-none-any.whl
 docopt==0.6.2
 filelock==3.0.12
-Flask @ file:///home/runner/.cache/pypoetry/artifacts/19/0a/5c/01c8f2563043757030137df198eec84b501545c42c399d58cb1fc733b3/Flask-2.0.2-py3-none-any.whl
+Flask file:///home/runner/.cache/pypoetry/artifacts/19/0a/5c/01c8f2563043757030137df198eec84b501545c42c399d58cb1fc733b3/Flask-2.0.2-py3-none-any.whl
 funcsigs==1.0.2
 future==0.18.2
 gast==0.3.3
@@ -40,12 +40,12 @@ greenlet==1.1.1
 grpcio==1.40.0
 h5py==2.10.0
 html5lib==1.1
-idna @ file:///home/runner/.cache/pypoetry/artifacts/f7/09/c9/8e80952436ff87855ddff4891a35ecf913b2b5dc97911f02a070ff2b1f/idna-3.3-py3-none-any.whl
+idna file:///home/runner/.cache/pypoetry/artifacts/f7/09/c9/8e80952436ff87855ddff4891a35ecf913b2b5dc97911f02a070ff2b1f/idna-3.3-py3-none-any.whl
 importlib-metadata==3.10.1
 itsdangerous==2.0.1
 jedi==0.15.2
 jeepney==0.7.1
-Jinja2 @ file:///home/runner/.cache/pypoetry/artifacts/f9/9a/d1/31d24b6a14d80530d2950db31fe7d51612fc7508b3648575c0fc5ea988/Jinja2-3.0.3-py3-none-any.whl
+Jinja2 file:///home/runner/.cache/pypoetry/artifacts/f9/9a/d1/31d24b6a14d80530d2950db31fe7d51612fc7508b3648575c0fc5ea988/Jinja2-3.0.3-py3-none-any.whl
 joblib==1.0.1
 Keras-Preprocessing==1.1.2
 keyring==21.8.0
@@ -55,7 +55,7 @@ Markdown==3.3.4
 MarkupSafe==2.0.1
 matplotlib==3.4.3
 msgpack==1.0.2
-multidict @ file:///home/runner/.cache/pypoetry/artifacts/f5/6f/72/23c8129e53a29d981196789f195c6b9162a585d559c0fd55df96f3453a/multidict-6.0.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+multidict file:///home/runner/.cache/pypoetry/artifacts/f5/6f/72/23c8129e53a29d981196789f195c6b9162a585d559c0fd55df96f3453a/multidict-6.0.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 nltk==3.6.2
 numpy==1.21.2
 oauthlib==3.1.1
@@ -85,11 +85,11 @@ pyquil==1.9.0
 python-dateutil==2.8.2
 python-jsonrpc-server==0.3.2
 python-language-server==0.31.10
-pytz @ file:///home/runner/.cache/pypoetry/artifacts/07/c1/43/6f22a533e7bc5e277f10b4c6033e936ff7bbeb6464e5f27dbfb6c641d7/pytz-2021.3-py2.py3-none-any.whl
-pytz-deprecation-shim @ file:///home/runner/.cache/pypoetry/artifacts/76/16/7b/4d1ca0f1ad2780cff55cac2a295ab01207736e7bf115be1a2a4a692ec6/pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl
-pyxel @ git+https://github.com/amasad/pyxel@8bcc2266b2fbb65f72ad686952de3838971c136e
+pytz file:///home/runner/.cache/pypoetry/artifacts/07/c1/43/6f22a533e7bc5e277f10b4c6033e936ff7bbeb6464e5f27dbfb6c641d7/pytz-2021.3-py2.py3-none-any.whl
+pytz-deprecation-shim file:///home/runner/.cache/pypoetry/artifacts/76/16/7b/4d1ca0f1ad2780cff55cac2a295ab01207736e7bf115be1a2a4a692ec6/pytz_deprecation_shim-0.1.0.post0-py2.py3-none-any.whl
+pyxel  git+https://github.com/amasad/pyxel@8bcc2266b2fbb65f72ad686952de3838971c136e
 referenceqvm==0.3
-regex @ file:///home/runner/.cache/pypoetry/artifacts/99/49/44/9e9bdf5b6623cac1346bb318ca75bf62060573491a64c8957808268c26/regex-2022.1.18-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+regex  file:///home/runner/.cache/pypoetry/artifacts/99/49/44/9e9bdf5b6623cac1346bb318ca75bf62060573491a64c8957808268c26/regex-2022.1.18-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 replit==3.2.4
 requests==2.26.0
 requests-oauthlib==1.3.0
@@ -105,22 +105,22 @@ SQLAlchemy==1.4.23
 sqlparse==0.4.2
 tensorboard==2.2.2
 tensorboard-plugin-wit==1.8.0
-tensorflow-cpu @ https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow_cpu-2.2.0-cp38-cp38-manylinux2010_x86_64.whl
+tensorflow-cpu https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow_cpu-2.2.0-cp38-cp38-manylinux2010_x86_64.whl
 tensorflow-estimator==2.2.0
 termcolor==1.1.0
 toml==0.10.2
 tomlkit==0.7.2
 tqdm==4.62.2
-typing-extensions @ file:///home/runner/.cache/pypoetry/artifacts/da/25/4f/38edfb1c3dd33665d6fc2c563dfb5debfcd3204ffc6943c80f09f8d54b/typing_extensions-4.0.1-py3-none-any.whl
-tzdata @ file:///home/runner/.cache/pypoetry/artifacts/b9/2e/38/bd9495d3121c1d7fc7052dce916abb35d49bb9ec3297ba418fb0fe8636/tzdata-2021.5-py2.py3-none-any.whl
-tzlocal @ file:///home/runner/.cache/pypoetry/artifacts/4c/9d/23/923fef6f6fac36c2cee52d8c435f0f4101da89f3d80830de0f325f610d/tzlocal-4.1-py3-none-any.whl
+typing-extensions file:///home/runner/.cache/pypoetry/artifacts/da/25/4f/38edfb1c3dd33665d6fc2c563dfb5debfcd3204ffc6943c80f09f8d54b/typing_extensions-4.0.1-py3-none-any.whl
+tzdata file:///home/runner/.cache/pypoetry/artifacts/b9/2e/38/bd9495d3121c1d7fc7052dce916abb35d49bb9ec3297ba418fb0fe8636/tzdata-2021.5-py2.py3-none-any.whl
+tzlocal file:///home/runner/.cache/pypoetry/artifacts/4c/9d/23/923fef6f6fac36c2cee52d8c435f0f4101da89f3d80830de0f325f610d/tzlocal-4.1-py3-none-any.whl
 ujson==1.35
 urllib3==1.26.6
 virtualenv==20.7.2
 webencodings==0.5.1
-Werkzeug @ file:///home/runner/.cache/pypoetry/artifacts/15/3a/86/89704bd3f51d9796b98faa9cca15516723bdc7c61a85ecd9037cbd224a/Werkzeug-2.0.2-py3-none-any.whl
+Werkzeug file:///home/runner/.cache/pypoetry/artifacts/15/3a/86/89704bd3f51d9796b98faa9cca15516723bdc7c61a85ecd9037cbd224a/Werkzeug-2.0.2-py3-none-any.whl
 wrapt==1.12.1
 yapf==0.31.0
 yarg==0.1.9
-yarl @ file:///home/runner/.cache/pypoetry/artifacts/2c/83/5a/158749cd44edaa805109a71335543407853e78baad4ccdd4fb58410453/yarl-1.7.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+yarl  file:///home/runner/.cache/pypoetry/artifacts/2c/83/5a/158749cd44edaa805109a71335543407853e78baad4ccdd4fb58410453/yarl-1.7.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
 zipp==3.4.1
