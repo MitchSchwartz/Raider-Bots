@@ -1,0 +1,26 @@
+[dev-packages]
+
+[packages]
+nose = "*"
+requests = "*"
+pymysql = "*"
+paho-mqtt = "*"
+opencv-python = "*"
+matplotlib = "*"
+pylint = "*"
+rope = "*"
+pyusb = "*"
+discord = "*"
+asyncio = "*"
+os = "*"
+datetime = "*"
+flask = "*"
+threading = "*"
+requests = "*"
+json = "*"
+pytz = "*"
+dateparser = "*"
+
+
+[requires]
+python_version = "3.8"
