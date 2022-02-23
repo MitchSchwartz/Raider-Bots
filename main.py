@@ -8,11 +8,11 @@ from endpoints import home, startFlask
 print(sys.version)
 print(sys.version_info)
 
-#Bots Online
-botsOnline()
-
 #Start Web Server
 startFlask()
+
+#Bots Online
+botsOnline()
 
 #run all the things
 home()
