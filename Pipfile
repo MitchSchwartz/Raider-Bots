@@ -11,7 +11,7 @@ flask = "*"
 pytz = "*"
 dateparser = "*"
 requests = "*"
-
+gunicorn = "*"
 
 #[requires]
 #python_version = "3.8"
