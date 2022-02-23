@@ -37,15 +37,6 @@ def home():
     return('ok')
  
 
-@app.route('/tokenbots')
-def tokenbots():
-    getTokenValues()
-
-
-@app.route('/tourney/<nextTourney>')
-#def tourneyTimer(nextTourney):
-  #updateNextTourney(nextTourney)
-
 
 def run():
     app.run(host='0.0.0.0',port=8080)

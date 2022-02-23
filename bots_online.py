@@ -26,7 +26,7 @@ def botsOnline():
     "grimweedBot" : Bot("grimweedBot", "token"),
     "eyeOfNewtBot" : Bot("eyeOfNewtBot", "token"),
     "mhpBot" : Bot("mhpBot", "token"),
-    "RM-BondBot" : Bot("RM-BondBot", "bond"),
+    #"RM-BondBot" : Bot("RM-BondBot", "bond"),
     "tourneyBot" : Bot("tourneyBot", "timer"),
     "resetTimerBot" : Bot("resetTimerBot", "timer")    
   }
