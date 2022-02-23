@@ -16,7 +16,7 @@ async def runTheNextThing():
     sleep(60)
     print("running now")
     home(0,0)
-    
+
 
 def runAllTheThings():
   try:
@@ -46,7 +46,7 @@ def home(_fakeParam1, _fakeParam2):
     
     print(f"\n >>> Home Executed - {datetime.now()} \n")    
 
-    #runTheNextThing()
+    runTheNextThing()
 
     return('ok')
  
