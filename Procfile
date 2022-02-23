@@ -1,2 +1,2 @@
-web: gunicorn endpoint.py:raider-bots
+web: gunicorn endpoints.py:startFlask
 worker: python main.py
