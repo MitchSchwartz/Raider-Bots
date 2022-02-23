@@ -1,2 +1,2 @@
-web: python endpoints.py
-worker: python main.py 
+web: gunicorn main.py:raider-bots
+worker: main.py 
