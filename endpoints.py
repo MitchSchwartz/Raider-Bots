@@ -11,7 +11,7 @@ from reset_timer_update import resetTimerUpdate
 
 app = Flask('')
 
-async def runTheNextThing():
+def runTheNextThing():
     print("running again in 60 seconds")
     sleep(60)
     print("running now")
