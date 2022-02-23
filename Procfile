@@ -1,2 +1,2 @@
-web: gunicorn main.py:raider-bots
-worker: main.py 
+web: gunicorn home:raider-bots
+worker: home
