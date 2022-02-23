@@ -15,7 +15,7 @@ startFlask()
 botsOnline()
 
 #run all the things
-home()
+home(0,0)
 
 #Keep the loops going I guess?
 loopForever()
