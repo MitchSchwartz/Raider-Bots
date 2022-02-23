@@ -27,7 +27,8 @@ def getEvents(_server):
   try:
     r = requests.get(url, headers=headers)
   except requests.exceptions.RequestException as e:
-    print(f"\n {e} \n {r.content} \n")
+    print(f"\n {e} \n")# {r.content} \n")
+    
     
   response = r.json()
   #print (dumps(response, indent=4))
@@ -43,13 +44,13 @@ def getNextEventStart(e):
     e.sort(key = lambda x:x["scheduled_start_time"])
 
     nextStart = dParse(e[0]['scheduled_start_time'])
-    print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
+    #print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
 
     return nextStart
 
   except requests.exceptions.RequestException as e:
     print(f"\n {e} \n {e.content} \n")
-    return ("! We had an problem getting events from disord")
+    return ("! We had an problem getting events from discord")
     
 
 
@@ -64,7 +65,7 @@ def tourneyTimeDiff(nextStart):
   #print(f"\n>>>tourneyTimediff: {tourneyTimeDiff}\n")
 
   tourneyTimeDiff = makeTimerStr(tourneyTimeDiff)
-  print(f"\n>>>tourneyTimediff2: {tourneyTimeDiff}\n")
+  #print(f"\n>>>tourneyTimediff2: {tourneyTimeDiff}\n")
 
   if past:
     tourneyTimeDiff = f"- {tourneyTimeDiff}"
@@ -80,7 +81,7 @@ def tournamentTimerUpdate(_server):
   events = False
   events = getEvents(_server)
   newBotName = "Event: TBA"
-  print(f">>>Events:{events}")
+  #print(f">>>Events:{events}")
 
   
   if (not events):
@@ -106,7 +107,7 @@ def tournamentTimerUpdate(_server):
       try:
         botNameUpdate(newBotName, "tourneyBot", x)
       except requests.exceptions.RequestException as e:
-        print(f"\n {e} \n {r.content} \n")
+        print(f"\n {e} \n")
     
   print("bot names updated")
 

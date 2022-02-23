@@ -2,7 +2,7 @@ import os
 import requests
 
 from get_server_id import getServerId
-from json import dumps
+#from json import dumps
 
 
 def botNameUpdate(_newName, _tokenName, _server):
@@ -18,7 +18,7 @@ def botNameUpdate(_newName, _tokenName, _server):
   try:  
     r = requests.patch(url, json=payload, headers=headers)
     #r.json()
-    print(f"\n>>>Name Update: {_tokenName} on {_server}\n>>>{r}\n", "\n", dumps(r.json(), indent=4))#, "\n>>> {r.headers}")
+    print(f"\n>>>Name Update: {_tokenName} on {_server}\n>>>{r}\n")#, "\n", dumps(r.json(), indent=4))#, "\n>>> {r.headers}")
 
 
   except requests.exceptions.RequestException as e:

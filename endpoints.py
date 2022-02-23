@@ -15,11 +15,25 @@ app = Flask('')
 # pinged every minute by https://console.cron-job.org/dashboard
 def home():
     print("\n", ">>> RUNNING HOME", "\n")
-    getTokenValues()
-    resetTimerUpdate()
-    tournamentTimerUpdate("cr")
-
+    
+    try:
+      getTokenValues()
+    except:
+      print("Token Bot Update error - Mitch")
+    
+    try:    
+      resetTimerUpdate()
+    except:
+      print("resetTimer Bot Update error - Mitch")
+    
+  
+    try:
+      tournamentTimerUpdate("cr")
+    except:
+      print("tournament bot error, probably rate limit bullshit")
+    
     print(f"\n >>> Home Executed - {datetime.now()} \n")
+    
     return('ok')
  
 

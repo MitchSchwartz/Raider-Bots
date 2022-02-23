@@ -34,13 +34,13 @@ def resetTimerUpdate():
   
   #this next line is to adjust the weekday to wednesday
   nextReset -= timedelta(days = nextReset.weekday() -2)
-  print ("\n", "findNextReset: ", nextReset, "\n")
+  #print ("\n", "findNextReset: ", nextReset, "\n")
  
   if (nextReset - now).days < 0:
       nextReset += timedelta(days = 7)
 
   timeLeft, past = findTimeDiff(now, nextReset)
-  print("timerStr: ", timeLeft)
+  #print("timerStr: ", timeLeft)
 
 
   timeLeft = makeTimerStr(timeLeft)  
