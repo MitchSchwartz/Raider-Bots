@@ -13,7 +13,7 @@ app = Flask('')
 
 @app.route('/')
 # pinged every minute by https://console.cron-job.org/dashboard
-def home():
+def home(_fakeParam1, _fakeParam2):
     print("\n", ">>> RUNNING HOME", "\n")
     
     try:
