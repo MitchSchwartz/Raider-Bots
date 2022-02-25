@@ -11,44 +11,48 @@ from reset_timer_update import resetTimerUpdate
 
 app = Flask('')
 
-def runTheNextThing():
-    print("running again in 60 seconds")
-    sleep(60)
-    print("running now")
-    home(0,0)
 
 
-def runAllTheThings():
-  try:
+def updateAlltheBots():
+  print("\n", f">>> RUNNING HOME  - {datetime.now()} \n")
+    
+  while True:
+
+    try:
       getTokenValues()
-  except:
-    print("Token Bot Update error - Mitch")
+    except:
+      print("Token Bot Update error - Mitch")
+    
+    try:    
+      resetTimerUpdate()
+    except:
+      print("resetTimer Bot Update error - Mitch")
+    
+
+    try:
+      tournamentTimerUpdate("cr")
+    except:
+      print("tournament bot error, probably rate limit bullshit")
+    
+    print(f"\n >>> Home Executed - {datetime.now()} \n")
   
-  try:    
-    resetTimerUpdate()
-  except:
-    print("resetTimer Bot Update error - Mitch")
+    sleep(50)
+
   
 
-  try:
-    tournamentTimerUpdate("cr")
-  except:
-    print("tournament bot error, probably rate limit bullshit")
+    
 
 
 
 @app.route('/')
 # pinged every minute by https://console.cron-job.org/dashboard
-def home(_fakeParam1, _fakeParam2):
-    print("\n", ">>> RUNNING HOME", "\n")
+def ping(_fakeParam1, _fakeParam2):
+  return('ok')
+      
     
-    runAllTheThings()    
-    
-    print(f"\n >>> Home Executed - {datetime.now()} \n")    
+        
 
-    runTheNextThing()
 
-    return('ok')
  
 
 

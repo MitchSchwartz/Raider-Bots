@@ -1,6 +1,6 @@
 import sys
 from bots_online import botsOnline, loopForever
-from endpoints import home, startFlask
+from endpoints import ping, startFlask, updateAlltheBots 
 
 #discord logging
 #logging.basicConfig(level=logging.INFO)
@@ -15,7 +15,7 @@ startFlask()
 botsOnline()
 
 #run all the things
-home(0,0)
+updateAlltheBots()
 
 #Keep the loops going I guess?
 loopForever()
