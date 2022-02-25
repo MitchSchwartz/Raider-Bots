@@ -14,7 +14,7 @@ app = Flask('')
 
 
 def updateAlltheBots():
-  print("\n", f">>> RUNNING HOME  - {datetime.now()} \n")
+  print("\n", f">>> RUNNING updateAlltheBots  - {datetime.now()} \n")
     
   while True:
 
@@ -34,7 +34,7 @@ def updateAlltheBots():
     except:
       print("tournament bot error, probably rate limit bullshit")
     
-    print(f"\n >>> Home Executed - {datetime.now()} \n")
+    print(f"\n >>> updateAlltheBots Executed - {datetime.now()} \n")
   
     sleep(50)
 
