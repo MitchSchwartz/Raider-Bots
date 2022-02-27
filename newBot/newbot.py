@@ -17,7 +17,7 @@ def runNewBot():
 
 
   @slash.slash(name="buy_raider", description="How can I buy $Raider tokens?")
-  async def buy_raider(ctx):
+  async def buy_raider(self, ctx):
     await ctx.send("To buy $RAIDER tokens from SushiSwap, click here:\nhttps://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0xcd7361ac3307D1C5a46b63086a90742Ff44c63B3")
 
   @slash.slash(name="buy_aurum", description="How can I buy $Aurum tokens?")
