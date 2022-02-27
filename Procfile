@@ -1,2 +1,2 @@
-web: gunicorn endpoints:updateAlltheBots
+web: gunicorn endpoints:ping
 worker: python main.py
