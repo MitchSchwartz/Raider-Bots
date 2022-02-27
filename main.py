@@ -16,6 +16,7 @@ botsOnline()
 
 #run all the things
 updateAlltheBots()
+newBot.runNewBot()
 
 #Keep the loops going I guess?
 loopForever()
