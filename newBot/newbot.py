@@ -9,6 +9,8 @@ from get_server_id import getServerId
 
 
 def runNewBot():
+  
+  print("Starting NewBot")
 
   newBot = commands.Bot(command_prefix='-')
   slash = SlashCommand(newBot, sync_commands=True)
