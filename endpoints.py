@@ -40,7 +40,7 @@ def updateAlltheBots():
       print("tournament bot error, probably rate limit bullshit")
     
     
-    if (i<30):
+    if (i>30):
       url = 'https://nosnch.in/74bee12403'
       headers = {'Content-Type: application/x-www-url-formencoded'}
       r = requests.post(url, headers=headers)
