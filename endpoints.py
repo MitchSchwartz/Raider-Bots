@@ -42,7 +42,7 @@ def updateAlltheBots():
     
     if (i>30):
       url = 'https://nosnch.in/74bee12403'
-      headers = {'Content-Type: application/x-www-url-formencoded'}
+      headers = {'Content-Type': 'application/x-www-url-formencoded'}
       r = requests.post(url, headers=headers)
       i=0
       
