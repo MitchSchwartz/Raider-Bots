@@ -35,6 +35,7 @@ def botsOnline():
   #Get Bots Online
   for key in botList:
     botList[key].online
+    print(f"{key} online")
 
   
 
