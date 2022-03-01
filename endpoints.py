@@ -45,10 +45,10 @@ def updateAlltheBots():
       headers = {'Content-Type': 'application/x-www-url-formencoded'}
       r = requests.post(url, headers=headers)
       i=0
-      print(f"{i}")
+      print(f"i: {i}")
     else: 
       i += 1
-      print(f"{i}")
+      print(f"i: {i}")
     
     end = datetime.now()
     print(f"\n >>> updateAlltheBots Executed - {end} \n")
