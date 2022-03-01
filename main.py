@@ -16,8 +16,9 @@ startFlask()
 botsOnline()
 
 #run all the things
-updateAlltheBots()
 newBot.runNewBot()
+updateAlltheBots()
 
-#Keep the loops going I guess?
-loopForever()
+
+# #Keep the loops going I guess?
+# loopForever()
