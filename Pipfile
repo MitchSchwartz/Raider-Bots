@@ -12,6 +12,7 @@ pytz = "*"
 dateparser = "*"
 requests = "*"
 gunicorn = "*"
+discord-slash ="*"
 
 #[requires]
 #python_version = "3.8"
