@@ -45,7 +45,7 @@ def updateAlltheBots():
       headers = {'Content-Type': 'application/x-www-url-formencoded'}
       r = requests.post(url, headers=headers)
       i=0
-      print(i)
+      print(f"{i}")
     else: 
       i += 1
       print(f"{i}")
