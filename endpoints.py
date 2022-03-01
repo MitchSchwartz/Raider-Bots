@@ -18,10 +18,12 @@ app = Flask('')
 
 def updateAlltheBots():
   start = datetime.now()
+  i = 0
+  
   print("\n", f">>> RUNNING updateAlltheBots  - {start} \n")
-    
+  
   while True:
-    i = 0
+    
     
     try:
       getTokenValues()
@@ -46,6 +48,7 @@ def updateAlltheBots():
       r = requests.post(url, headers=headers)
       i=0
       print(f"i: {i}")
+      
     else: 
       i += 1
       print(f"i: {i}")
