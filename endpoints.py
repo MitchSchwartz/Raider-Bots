@@ -48,7 +48,7 @@ def updateAlltheBots():
       print(i)
     else: 
       i += 1
-      print(i)
+      print(f"{i}")
     
     end = datetime.now()
     print(f"\n >>> updateAlltheBots Executed - {end} \n")
