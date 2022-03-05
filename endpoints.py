@@ -45,13 +45,16 @@ def updateAlltheBots():
     except:
       print("tournament bot error, probably rate limit bullshit")
     
+    pingFreq = 30
     
-    if (i>=30 or i == 0):
+    if (i>=pingFreq or i == 0):
       url = 'https://nosnch.in/74bee12403'
       headers = {'Content-Type': 'application/x-www-url-formencoded'}
       r = requests.post(url, headers=headers)
       print(r)
-      i=0
+      
+      if(i>=pingFreq):
+        i=0
       print(f"i: {i}")
       
     else: 
@@ -62,7 +65,7 @@ def updateAlltheBots():
     print(f"\n >>> updateAlltheBots Executed - {end} \n")
     
     sleepTime = end - start
-    print("sleep time")
+    print(f"sleep time: {sleepTime}")
     sleep(50)
 
   
