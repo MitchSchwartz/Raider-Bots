@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 import os
 import requests
 #import discord
@@ -35,9 +36,10 @@ def priceInAurum(_tokenPrice, _aurumPrice):
 
 def getTokenValues():
   
+  perPage = tokenList.__len__
   auth = os.environ.get("nomicsKey")
   ids = (','.join(tokenList))
-  url = f'https://api.nomics.com/v1/currencies/ticker?key={auth}&per-page=100&ids={ids}'
+  url = f'https://api.nomics.com/v1/currencies/ticker?key={auth}&per-page={perPage}&ids={ids}'
   
     
   
