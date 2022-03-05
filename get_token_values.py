@@ -37,7 +37,7 @@ def getTokenValues():
   
   auth = os.environ.get("nomicsKey")
   ids = (','.join(tokenList))
-  url = f'https://api.nomics.com/v1/currencies/ticker?key={auth}&ids={ids}'
+  url = f'https://api.nomics.com/v1/currencies/ticker?key={auth}&per-page=3&ids={ids}'
   
     
   
