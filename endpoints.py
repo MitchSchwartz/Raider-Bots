@@ -9,7 +9,7 @@ from get_token_values import getTokenValues
 from tournament_timer_update import tournamentTimerUpdate
 from reset_timer_update import resetTimerUpdate
 
-
+i = 0
 
 
 app = Flask('')
@@ -18,7 +18,7 @@ app = Flask('')
 
 def updateAlltheBots():
   start = datetime.now()
-  i = 0
+ 
   
   print("\n", f">>> RUNNING updateAlltheBots  - {start} \n")
   
