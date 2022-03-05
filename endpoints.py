@@ -61,7 +61,8 @@ def updateAlltheBots():
     end = datetime.now()
     print(f"\n >>> updateAlltheBots Executed - {end} \n")
     
-    
+    sleepTime = end - start
+    print("sleep time")
     sleep(50)
 
   
