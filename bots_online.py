@@ -12,7 +12,7 @@ def botsOnline():
       self.name = _name
       self.botClient = discord.Client()
       self.token = os.environ.get(f"{_name}")
-      self.online = self.botClient.start(self.token)
+      #self.online = self.botClient.start(self.token)
       self.botType = _botType
       self.price = 0
             
@@ -34,7 +34,8 @@ def botsOnline():
   #Get Bots Online
   for key in botList:
     print(f"{key} online")
-    loop.create_task(botList[key].online())
+    loop.create_task(botList[key].botClient.start(botList[key].token))
+    #loop.create_task(botList[key].online())
   
   loop.run_forever()
 
