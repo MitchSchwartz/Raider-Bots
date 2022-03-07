@@ -33,8 +33,12 @@ def botsOnline():
   loop = asyncio.get_event_loop()
   #Get Bots Online
   for key in botList:
-    print(f"{key} online")
-    loop.create_task(botList[key].botClient.start(botList[key].token))
+    try:
+      loop.create_task(botList[key].botClient.start(botList[key].token))
+    except:
+      print(f"Something broke with this bot")
+    else:
+      print(f"{key} online")
     #loop.create_task(botList[key].online())
   
   loop.run_forever()
