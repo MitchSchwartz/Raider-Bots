@@ -2,7 +2,6 @@ import discord
 import asyncio
 import os
 
-loop = asyncio.get_event_loop()
 botList ={}
 
 def botsOnline():
@@ -13,7 +12,7 @@ def botsOnline():
       self.name = _name
       self.botClient = discord.Client()
       self.token = os.environ.get(f"{_name}")
-      self.online = loop.create_task(self.botClient.start(self.token))
+      self.online = self.botClient.start(self.token)
       self.botType = _botType
       self.price = 0
             
@@ -30,22 +29,14 @@ def botsOnline():
     "tourneyBot" : Bot("tourneyBot", "timer"),
     "resetTimerBot" : Bot("resetTimerBot", "timer")    
   }
-    
-  
+
+  loop = asyncio.get_event_loop()
   #Get Bots Online
   for key in botList:
-    botList[key].online
     print(f"{key} online")
+    loop.create_task(botList[key].online())
   
   loop.run_forever()
-
-  
-
-
-def loopForever():
-  loop.run_forever()
-
-
 
   
 
