@@ -43,7 +43,7 @@ def updateAlltheBots():
     try:
       tournamentTimerUpdate("cr")
     except:
-      print("tournament bot error, probably rate limit bullshit")
+      print("tournament bot error, probably rate limit")
     
     pingFreq = 30
     

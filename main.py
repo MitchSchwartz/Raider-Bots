@@ -10,7 +10,7 @@ print(sys.version)
 print(sys.version_info)
 
 #Start Web Server
-startFlask()
+#startFlask()
 
 #Bots Online
 botsOnline()
