@@ -36,6 +36,8 @@ def botsOnline():
   for key in botList:
     botList[key].online
     print(f"{key} online")
+  
+  loop.run_forever()
 
   
 
