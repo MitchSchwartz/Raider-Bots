@@ -36,7 +36,7 @@ def priceInAurum(_tokenPrice, _aurumPrice):
 
 def getTokenValues():
   
-  perPage = tokenList.__len__
+  perPage = len(tokenList)
   auth = os.environ.get("nomicsKey")
   ids = (','.join(tokenList))
   url = f'https://api.nomics.com/v1/currencies/ticker?key={auth}&per-page={perPage}&ids={ids}'
