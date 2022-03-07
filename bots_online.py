@@ -2,7 +2,6 @@ import discord
 import asyncio
 import os
 
-loop = asyncio.get_event_loop()
 botList ={}
 
 def botsOnline():
@@ -31,7 +30,7 @@ def botsOnline():
     "resetTimerBot" : Bot("resetTimerBot", "timer")    
   }
 
-  loop.get_event_loop()
+  loop = asyncio.get_event_loop()
   #Get Bots Online
   for key in botList:
     print(f"{key} online")
