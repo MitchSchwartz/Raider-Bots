@@ -1,7 +1,7 @@
 import sys
 from bots_online import botsOnline#, loopForever
 #from newBot.newbot import newBot
-from endpoints import ping, startFlask, updateAlltheBots 
+from endpoints import updateAlltheBots#, ping, startFlask,
 
 #discord logging
 #logging.basicConfig(level=logging.INFO)
@@ -13,7 +13,7 @@ print(sys.version_info)
 #startFlask()
 
 #Bots Online
-botsOnline()
+#botsOnline()
 
 #run all the things
 #newBot.runNewBot()

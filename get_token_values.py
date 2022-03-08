@@ -10,8 +10,9 @@ from update_bot_name import botNameUpdate
 import json 
 from get_server_id import serverList
 
-tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT","MHP2"]
+from Utilities import priceInAurum
 
+tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT","MHP2"]
 
 # ###tokenlist constructor
 # def getTokenList():
@@ -26,12 +27,6 @@ tokenList = ["RAIDER","AURUM2","GRIMWEED","NEWT","MHP2"]
   
 #   print (f"\n>>>{tokenList}")  
 #   return tokenList
-  
-
-def priceInAurum(_tokenPrice, _aurumPrice):
-
-  price = float(_tokenPrice) / float(_aurumPrice)
-  return price
 
 
 def getTokenValues():
