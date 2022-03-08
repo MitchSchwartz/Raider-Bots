@@ -44,14 +44,3 @@ def botsOnline():
   loop.run_forever()
 
   
-
-# A Loop  I would like to do instead
-'''
-for x in botList:  
-  x = Bot(f"{x}")
-  print(f"bot init: {x.name}")
-  #x = discord.Client()
-  #xT = os.environ.get(x)
-  #x.online
-  #sleep(1)
-'''
