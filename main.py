@@ -14,13 +14,15 @@ print(sys.version_info)
 #startFlask()
 
 #Bots Online
-botThread = threading.Thread(target=botsOnline)
-botThread.start()
+botsOnline()
+# botThread = threading.Thread(target=botsOnline)
+# botThread.start()
 
 #run all the things
 #newBot.runNewBot()
-botUpdateThread = threading.Thread(target=updateAlltheBots)
-botUpdateThread.start()
+updateAlltheBots()
+# botUpdateThread = threading.Thread(target=updateAlltheBots)
+# botUpdateThread.start()
 
 
 # #Keep the loops going I guess?
