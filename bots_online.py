@@ -10,7 +10,7 @@ botList = {
   "grimweedBot" : Bot("grimweedBot", "Grmw", "token", "GRIMWEED"),
   "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "token", "NEWT"),
   "mhpBot" : Bot("mhpBot", "MHP", "token", "MHP2"),
-  #"RM-BondBot" : Bot("RM-BondBot", "bond"),
+  
   "tourneyBot" : Bot("tourneyBot", "Tourney", "timer"),
   "resetTimerBot" : Bot("resetTimerBot", "Reset", "timer")    
 } 
