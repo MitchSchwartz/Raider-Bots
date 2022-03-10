@@ -38,6 +38,6 @@ def botsOnline():
   print(f"{key} online")
 
   updateBotTask = loop.create_task(updateBotPrices())
-  await updateBotTask
-  await asyncio.sleep(60);
+  updateBotTask
+  asyncio.sleep(60);
   loop.run_forever()

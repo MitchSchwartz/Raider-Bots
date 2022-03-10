@@ -76,7 +76,7 @@ def updateAlltheBots():
 
 @app.route('/')
 # pinged every minute by https://console.cron-job.org/dashboard
-def ping(_fakeParam1, _fakeParam2):
+def ping():
   return('ok')
       
     
