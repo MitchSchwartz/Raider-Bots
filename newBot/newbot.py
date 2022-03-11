@@ -7,7 +7,6 @@ from get_server_id import getServerId
 
 
 
-
 def runNewBot():
   
   print("Starting NewBot")
