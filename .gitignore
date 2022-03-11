@@ -1,9 +1,0 @@
-__pycache__/*
-.env
-*.pyc
-__pycache__/bots_online.cpython-38.pyc
-__pycache__/get_server_id.cpython-38.pyc
-__pycache__/get_token_values.cpython-38.pyc
-__pycache__/test_mode.cpython-38.pyc
-__pycache__/tournament_timer_update.cpython-38.pyc
-__pycache__/update_bot_name.cpython-38.pyc
