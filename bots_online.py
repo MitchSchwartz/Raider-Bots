@@ -39,13 +39,13 @@ def botsOnline():
   #Get Bots Online
   for key in botList:
     try:
-      botList[key].online
-      #loop.create_task(botList[key].botClient.start(botList[key].token))
+      #botList[key].online
+      loop.create_task(botList[key].botClient.start(botList[key].token))
     except:
       print(f"Something broke with this bot")
     else:
       print(f"{key} online")
-    #loop.create_task(botList[key].online())
+      #loop.create_task(botList[key].online())
   
   loop.run_forever()
 
