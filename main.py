@@ -1,8 +1,7 @@
 import sys
-import threading
-from bots_online import botsOnline#, loopForever
+from bots_online import botsOnline
 #from newBot.newbot import newBot
-from endpoints import ping, startFlask, updateAlltheBots 
+ 
 
 #discord logging
 #logging.basicConfig(level=logging.INFO)
@@ -13,17 +12,11 @@ print(sys.version_info)
 #Start Web Server
 #startFlask()
 
-#Bots Online
-botsOnline()
-# botThread = threading.Thread(target=botsOnline)
-# botThread.start()
-
 #run all the things
 #newBot.runNewBot()
-updateAlltheBots()
-# botUpdateThread = threading.Thread(target=updateAlltheBots)
-# botUpdateThread.start()
+
+#Bots Online
+botsOnline()
+###pretty sure nothing after here happens
 
 
-# #Keep the loops going I guess?
-# loopForever()

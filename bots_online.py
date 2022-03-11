@@ -1,6 +1,8 @@
 import discord
 import asyncio
 import os
+import threading
+from endpoints import updateAlltheBots
 
 botList ={}
 
@@ -12,7 +14,7 @@ def botsOnline():
       self.name = _name
       self.botClient = discord.Client()
       self.token = os.environ.get(f"{_name}")
-      #self.online = self.botClient.start(self.token)
+      self.online = self.botClient.start(self.token)
       self.botType = _botType
       self.price = 0
             
@@ -25,16 +27,20 @@ def botsOnline():
     "grimweedBot" : Bot("grimweedBot", "token"),
     "eyeOfNewtBot" : Bot("eyeOfNewtBot", "token"),
     "mhpBot" : Bot("mhpBot", "token"),
-    #"RM-BondBot" : Bot("RM-BondBot", "bond"),
     "tourneyBot" : Bot("tourneyBot", "timer"),
     "resetTimerBot" : Bot("resetTimerBot", "timer")    
   }
+
+  botUpdateThread = threading.Thread(target=updateAlltheBots)
+  botUpdateThread.start()
+
 
   loop = asyncio.get_event_loop()
   #Get Bots Online
   for key in botList:
     try:
-      loop.create_task(botList[key].botClient.start(botList[key].token))
+      botList[key].online
+      #loop.create_task(botList[key].botClient.start(botList[key].token))
     except:
       print(f"Something broke with this bot")
     else:
