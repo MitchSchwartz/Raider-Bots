@@ -13,10 +13,9 @@ dateparser = "*"
 requests = "*"
 gunicorn = "*"
 discord-interactions ="*"
-
 #[requires]
+"discord.py" = "*"
 #python_version = "3.8"
-
 
 [[source]]
 url = "https://pypi.python.org/simple"
