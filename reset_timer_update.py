@@ -47,7 +47,8 @@ def resetTimerUpdate():
   
   botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "cr")
   botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "test")
-  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "nft.it")
+  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "nft.it")  
+  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "CRtools")
 
  # for x in [serverList]:
   #  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", x)
