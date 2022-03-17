@@ -17,8 +17,32 @@ def botsOnline():
       self.online = self.botClient.start(self.token)
       self.botType = _botType
       self.price = 0
-            
+
+      
       print(f"\n>>> New Bot: {self.name}\n")
+
+      self.serverList = []
+
+      def updateServerList(newGuilds):
+        print('List of servers the bot is in: ')
+
+        for guild in self.guilds:
+          print(guild.name)
+          self.serverList.push(guild.id)
+
+      self.updateServerList = self.updateServerList()
+
+      self.serverList = self.updateServerList(newGuilds)
+      
+      @self.botClient.event
+      async def on_ready():        
+        self.serverList = self.botClient.guild.id
+
+
+      @self.event
+      async def on_guild_join(guild):
+        print('Bot has been added to a new server')
+       
 
 
   botList = {  
