@@ -15,7 +15,7 @@ gunicorn = "*"
 discord-interactions ="*"
 #[requires]
 "discord.py" = "*"
-#python_version = "3.10"
+#python_version = "3.8"
 
 
 [[source]]
