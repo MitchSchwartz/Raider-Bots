@@ -6,134 +6,121 @@ import functools
 
 def priceInAurum(_tokenPrice, _aurumPrice):
 
-  price = float(_tokenPrice) / float(_aurumPrice)
-  return price
+    price = float(_tokenPrice) / float(_aurumPrice)
+    return price
+
 
 def mapTokenPrices(acc, item):
-  
-  acc[item["currency"]]=item["price"]
-  return acc
+
+    acc[item["currency"]] = item["price"]
+    return acc
+
 
 def getTokenValues():
-  tokenList = list(filter(lambda item:botList[item].symbol !="", botList.keys()))
-    
-  perPage = 1000
-  
-  auth = os.environ.get("nomicsKey")
-  ids = (','.join(list(map(lambda item:botList[item].symbol, tokenList))))
-  url = f'https://api.nomics.com/v1/currencies/ticker?key={auth}&per-page={perPage}&ids={ids}'
-  
-    
-  
-  try:
-    r = requests.get(url)
-    res = r.json()
-    print(f"\n>>> Nomics response: {res} \n")
+    tokenList = list(
+        filter(lambda item: botList[item].symbol != "", botList.keys()))
 
-  except requests.exceptions.RequestException as e:
-    print(f"\n {e}")
-  
-  
+    perPage = 1000
 
-  #reduce array to currency:price key:value pairing
-  
-  tokenPrices = functools.reduce(mapTokenPrices, res, {})
+    auth = os.environ.get("nomicsKey")
+    ids = (','.join(list(map(lambda item: botList[item].symbol, tokenList))))
+    url = f'https://api.nomics.com/v1/currencies/ticker?key={auth}&per-page={perPage}&ids={ids}'
 
-  print(tokenPrices)
-  # try:
-  
-  #   i=0
-  
-      
-  #   while i < len(json.loads(r.text)): 
-       
-  #     if r.json()[i]['currency'] == "AURUM2":
-  #       aP = r.json()[i]['price']
-  
-  
-  #     if r.json()[i]['currency'] == "RAIDER":
-  #       rP = r.json()[i]['price']
-  
-      
-  #     if r.json()[i]['currency'] == "GRIMWEED":
-  #       gP = r.json()[i]['price']
-  
-         
-  #     if r.json()[i]['currency'] == "NEWT":
-  #       nP = r.json()[i]['price']
-  
-  #     if r.json()[i]['currency'] == "MHP2":
-  #       mP = r.json()[i]['price']
-  
-     
-  #     i += 1
-  
-  # except:
-  #   print(f"\n Error processing nomics response")
-  #   return("Token bot updates skipped")
-  
-  
-  botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
+    try:
+        r = requests.get(url)
+        res = r.json()
+        print(f"\n>>> Nomics response: {r} \n")
 
-  botList["raiderBot"].price ="{:10.2f}".format(float(tokenPrices["RAIDER"]))
-  
-  gPaP = priceInAurum(tokenPrices["GRIMWEED"], botList["aurumBot"].price)
-  botList["grimweedBot"].price = "{:10.2f}".format(float(gPaP))
+    except requests.exceptions.RequestException as e:
+        print(f"\n {e}")
 
+    #reduce array to currency:price key:value pairing
 
-  nPaP = priceInAurum(tokenPrices["NEWT"], botList["aurumBot"].price)
-  botList["eyeOfNewtBot"].price = "{:10.2f}".format(float(nPaP))
+    tokenPrices = functools.reduce(mapTokenPrices, res, {})
 
-  mPaP = priceInAurum(tokenPrices["MHP2"], botList["aurumBot"].price)
-  botList["mhpBot"].price = "{:10.2f}".format(float(mPaP))
+    print(tokenPrices)
+    # try:
 
-  
-  #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
+    #   i=0
 
- 
-    
-  #print(f"\n>>>serverList: {_serverList}")
+    #   while i < len(json.loads(r.text)):
 
-  # for x in _serverList:    
-  #   print(f"\n>>>x: {x}")
-  
-  #   #print(f"\n>>> Updating Aurum - {x}", "\n")
-  #   botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", x)  
-  #   #print(f"{x} - Aurumbot Updated")
-    
-  #   #print(f"\n>>> Updating Raider - {x}", "\n")
-  #   botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", x )
-  #   #print(f"{x} - RaiderBot Updated")
+    #     if r.json()[i]['currency'] == "AURUM2":
+    #       aP = r.json()[i]['price']
 
-  #  #print(f"\n>>> Updating Grimweed - {x}", "\n")
-  #   botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", x)  
-  #   #print(f"{x} - Grimweed Updated")
+    #     if r.json()[i]['currency'] == "RAIDER":
+    #       rP = r.json()[i]['price']
 
-  #   #print(f"\n>>> Updating Eye of Newt - {x}", "\n")
-  #   botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", x)
-  #   #print(f"{x} - Newt Updated")
-    
-  #   #print(f"\n>>> Updating MHP - {x}", "\n")
-  #   botNameUpdate(f"MHP  | {mhpPrice} AUR", "mhpBot", x)
-  #   #print(f"{x} - MHP Updated")
+    #     if r.json()[i]['currency'] == "GRIMWEED":
+    #       gP = r.json()[i]['price']
 
-  print(botList)
+    #     if r.json()[i]['currency'] == "NEWT":
+    #       nP = r.json()[i]['price']
 
-  
-  for bot in botList:
-    if (botList[bot].baseCurrency =="USD"):
-      botList[bot].updateServers(f"{botList[bot].displayName} | ${botList[bot].price}")
-      
-    elif (botList[bot].baseCurrency =="AURUM"):
-      botList[bot].updateServers(f"{botList[bot].displayName} | {botList[bot].price} AUR")
+    #     if r.json()[i]['currency'] == "MHP2":
+    #       mP = r.json()[i]['price']
 
+    #     i += 1
 
+    # except:
+    #   print(f"\n Error processing nomics response")
+    #   return("Token bot updates skipped")
 
-  
+    botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
 
-  
-  
+    botList["raiderBot"].price = "{:10.2f}".format(float(
+        tokenPrices["RAIDER"]))
 
+    gPaP = priceInAurum(tokenPrices["GRIMWEED"], botList["aurumBot"].price)
+    botList["grimweedBot"].price = "{:10.2f}".format(float(gPaP))
 
+    nPaP = priceInAurum(tokenPrices["NEWT"], botList["aurumBot"].price)
+    botList["eyeOfNewtBot"].price = "{:10.2f}".format(float(nPaP))
 
+    mPaP = priceInAurum(tokenPrices["MHP2"], botList["aurumBot"].price)
+    botList["mhpBot"].price = "{:10.2f}".format(float(mPaP))
+
+    #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
+
+    #print(f"\n>>>serverList: {_serverList}")
+
+    # for x in _serverList:
+    #   print(f"\n>>>x: {x}")
+
+    #   #print(f"\n>>> Updating Aurum - {x}", "\n")
+    #   botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", x)
+    #   #print(f"{x} - Aurumbot Updated")
+
+    #   #print(f"\n>>> Updating Raider - {x}", "\n")
+    #   botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", x )
+    #   #print(f"{x} - RaiderBot Updated")
+
+    #  #print(f"\n>>> Updating Grimweed - {x}", "\n")
+    #   botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", x)
+    #   #print(f"{x} - Grimweed Updated")
+
+    #   #print(f"\n>>> Updating Eye of Newt - {x}", "\n")
+    #   botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", x)
+    #   #print(f"{x} - Newt Updated")
+
+    #   #print(f"\n>>> Updating MHP - {x}", "\n")
+    #   botNameUpdate(f"MHP  | {mhpPrice} AUR", "mhpBot", x)
+    #   #print(f"{x} - MHP Updated")
+
+    print("\n", botList)
+
+    for bot in botList:
+        if (botList[bot].baseCurrency == "USD"):
+            print(f"{botList[bot].name} in USD")
+            try: botList[bot].updateBot(
+                f"{botList[bot].displayName} | ${botList[bot].price}")
+            except Exception as e:
+                print(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
+
+        elif (botList[bot].baseCurrency == "AURUM"):
+            print(f"{botList[bot].name} in AUR")
+            try: botList[bot].updateBot(
+                f"{botList[bot].displayName} | {botList[bot].price} AUR")
+            except Exception as e:
+                print(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
 

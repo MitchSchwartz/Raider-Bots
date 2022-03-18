@@ -88,18 +88,19 @@ def tournamentTimerUpdate(_server):
 
   try:
     nextStart =  getNextEventStart(events)
-    #print("\n>>>there's an event!")
+    print("\n>>>there's an event!")
     newBotName = f"Event: {tourneyTimeDiff(nextStart)}"
   except requests.exceptions.RequestException as e:
     print(f"\n>>>Error: {e}")# "\n", dumps(r.content), "\n")
     
     
   try:
-    botList["tourneyBot"].updateServers(f"Event: {newBotName}")
+    botList["tourneyBot"].updateBot({newBotName})
+    print("tourney bot name updated")
   except requests.exceptions.RequestException as e:
     print(f"\n {e} \n")
     
-  print("bot names updated")
+  
 
     
 

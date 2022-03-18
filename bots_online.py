@@ -2,13 +2,14 @@ import discord
 import os
 import requests
 from test_mode import testMode
+from time import sleep
 
 botList ={}
 
 
     
 class Bot:
-  
+
   def __init__(self, _name, _displayName, _symbol, _baseCurrency, _decimals, _botType):
     self.name = _name
     self.symbol = _symbol
@@ -21,51 +22,74 @@ class Bot:
     self.price = 0
     self.baseCurrency = _baseCurrency
     self.decimals = _decimals
+    self.updatingNow = False
 
-    
+    self.serverList = []
+    self.on_ready = self.client.event(self.on_ready)
+    self.on_guild_join = self.client.event(self.on_guild_join)
     
     print(f"\n>>> New Bot: {self.name}\n")
 
-    self.serverList = []
+  async def on_ready(self):        
+    self.updateServerList()
+    self.online = True
+    print(f"\n>>> {self.name} > @on_ready has run")
 
-    async def updateServerList(self):
-      self.serverList =[]
-      print(f'\n List of servers {self.name} is in: ')
+  async def on_guild_join(self, guild):
+    print('Bot has been added to a new server')     
+    self.updateServerList()
 
     
-      if (testMode):
-        self.serverList = ["test"]
 
-      else:
-        
-        for guild in self.client.guilds:
-          print(guild.name)
+  def updateServerList(self):
+    self.updatingNow = True
+    print(f'\n List of servers {self.name} is in: ')
+
+    
+    if (testMode):
+      self.serverList = [911693934231703602]
+
+    else:
+      
+      for guild in self.client.guilds:
+        print(guild.name)
+        if guild.id not in self.serverList:
+          print(f"new guild id: {guild.name} : {guild.id}")
           self.serverList.append(guild.id)
 
-      print(f"ServerList: {self.serverList}")
-
-    
-    self.updateServerList = updateServerList(self)
+    print(f"serverList: {self.serverList}")
+    self.updatingNow = False
     
     
-    @self.client.event
-    async def on_ready():        
-      self.serverList = await self.updateServerList
-      self.online = True
     
 
-    async def on_guild_join(guild):
-      print('Bot has been added to a new server')
-      async def on_ready():        
-        self.serverList = await self.updateServerList
+  ### BOT UPDATE METHOD ###
+  def updateBot(self, _newName):
+    print(f"{self.name} update function starting")
+    
+    self.updateServerList()
+    
+    # while self.updatingNow:
+    #   print(f"{self.name} server list updating")
+    #   sleep(1)
 
-  def updateServers(self, _newName):
-    for _server in self.serverList:         
-      if(testMode and (_server != "test" or _server =="")):
-         return(f"Skipping {_server} due to Test Mode")
+    
+    print(f"\n>>>self.serverList: {self.serverList}")
+    
+    for _server in self.serverList:
+      print(f"\n>>> Running updateBot {self.name} for {_server}")
+      
+      if(testMode and (_server != 911693934231703602 or _server =="")):
+        print(f"Skipping {_server} due to Test Mode")
+        return
+
+      if(self.serverList == [] or not self.serverList):
+        print(f"Skipping {_server} due to empty serverList")
+        return
+      
 
       
-      auth = "Bot " + os.environ.get(str(self.tokenName))
+      auth = "Bot " + self.token
       url = f'https://discordapp.com/api/guilds/{_server}/members/@me'        
       headers = {'Authorization': auth, 'Content-Type': 'application/json'}
       payload = {'nick': _newName}
@@ -73,7 +97,7 @@ class Bot:
     
       try:  
         r = requests.patch(url, json=payload, headers=headers)
-        print(f"\n>>>Name Update: {self.tokenName} on {_server}\n>>>{r}\n")
+        print(f"\n>>>Name Update: {self.name} on {_server}\n>>>{r}\n")
     
     
       except requests.exceptions.RequestException as e:
@@ -81,7 +105,7 @@ class Bot:
     
      
 
-
+ ### (name, display name, symbol, baseCurrency, decimals, bot type)
 botList = {  
   "raiderBot" : Bot(_name="raiderBot",_displayName="Raider", _symbol="RAIDER", _baseCurrency="USD", _decimals=2, _botType="token"),
   "aurumBot" : Bot("aurumBot", "Aurum", "AURUM2", "USD", 4, "token"),
