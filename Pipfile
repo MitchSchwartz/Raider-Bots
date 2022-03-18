@@ -17,6 +17,7 @@ discord-interactions ="*"
 "discord.py" = "*"
 #python_version = "3.8"
 
+
 [[source]]
 url = "https://pypi.python.org/simple"
 verify_ssl = true

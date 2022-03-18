@@ -1,5 +1,5 @@
 testMode = False
-liveOnly = False
+liveOnly = True
 
 
 def setTestMode(_value):
