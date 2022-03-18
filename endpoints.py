@@ -31,8 +31,8 @@ def updateAlltheBots():
     
     try:
       getTokenValues()
-    except:
-      print("Token Bot Update error - Mitch")
+    except Exception as e:
+      print(f"Token Bot Update error \n {e}")
     
     try:    
       resetTimerUpdate()

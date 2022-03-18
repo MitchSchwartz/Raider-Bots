@@ -14,4 +14,4 @@ def getServerId(_server):
   if (not _server or testMode):
     return serverList["test"]
   
-  return (serverList[_server])
+  return (False)

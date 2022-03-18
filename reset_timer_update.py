@@ -3,7 +3,7 @@ import dateparser
 
 from datetime import datetime, timedelta
 from date_functions import findTimeDiff, makeTimerStr
-from update_bot_name import botNameUpdate
+from bots_online import botList
 #from get_server_id import serverList
 
 
@@ -44,11 +44,9 @@ def resetTimerUpdate():
 
 
   timeLeft = makeTimerStr(timeLeft)  
+
+  botList["resetTimerBot"].updateServers(f"Reset: {str(timeLeft)}")
   
-  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "cr")
-  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "test")
-  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "nft.it")  
-  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", "CRtools")
 
  # for x in [serverList]:
   #  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", x)
