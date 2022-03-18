@@ -18,11 +18,7 @@ app = Flask('')
 
 def updateAlltheBots():
   start = datetime.now()
-  
-  try:
-    i
-  except:
-    i=0
+  i=0
   
   print("\n", f">>> RUNNING updateAlltheBots  - {start} \n")
   
@@ -31,8 +27,8 @@ def updateAlltheBots():
     
     try:
       getTokenValues()
-    except:
-      print("Token Bot Update error - Mitch")
+    except Exception as e:
+      print(f"Token Bot Update error \n {e}")
     
     try:    
       resetTimerUpdate()
@@ -47,7 +43,7 @@ def updateAlltheBots():
     
     pingFreq = 30
     
-    if (i>=pingFreq or i == 0):
+    if (i >=pingFreq or i < 1):
       url = 'https://nosnch.in/74bee12403'
       headers = {'Content-Type': 'application/x-www-url-formencoded'}
       r = requests.post(url, headers=headers)

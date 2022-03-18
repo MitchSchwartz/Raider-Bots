@@ -1,6 +1,7 @@
 import os
 import pytz
 import requests
+from bots_online import botList 
 
 
 from datetime import datetime
@@ -8,10 +9,8 @@ from dateparser import parse as dParse
 #from json import dumps
 
 #from operator import itemgetter
-from update_bot_name import botNameUpdate
-from get_server_id import getServerId, serverList
 from date_functions import findTimeDiff, makeTimerStr
-from test_mode import testMode, liveOnly
+
 
 
 
@@ -19,7 +18,7 @@ from test_mode import testMode, liveOnly
 def getEvents(_server):
   auth = "Bot " + os.environ.get(str("resetTimerBot"))
 
-  guildId = getServerId(_server)
+  guildId = 860057024611876865
 
   url = f"https://discordapp.com/api/v9/guilds/{guildId}/scheduled-events"
   headers = {'Authorization': auth, 'Content-Type': 'application/json'}
@@ -89,27 +88,19 @@ def tournamentTimerUpdate(_server):
 
   try:
     nextStart =  getNextEventStart(events)
-    #print("\n>>>there's an event!")
+    print("\n>>>there's an event!")
     newBotName = f"Event: {tourneyTimeDiff(nextStart)}"
   except requests.exceptions.RequestException as e:
     print(f"\n>>>Error: {e}")# "\n", dumps(r.content), "\n")
     
     
-
-  for x in serverList:
-    if (liveOnly and x == "test"):
-      continue
-
-    if (testMode and x != "test"):
-      continue
+  try:
+    botList["tourneyBot"].updateBot({newBotName})
+    print("tourney bot name updated")
+  except requests.exceptions.RequestException as e:
+    print(f"\n {e} \n")
     
-    else:
-      try:
-        botNameUpdate(newBotName, "tourneyBot", x)
-      except requests.exceptions.RequestException as e:
-        print(f"\n {e} \n")
-    
-  print("bot names updated")
+  
 
     
 
