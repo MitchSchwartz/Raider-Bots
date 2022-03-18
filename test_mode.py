@@ -1,4 +1,4 @@
-testMode = True
+testMode = False
 liveOnly = False
 
 

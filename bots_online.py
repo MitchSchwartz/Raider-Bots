@@ -2,7 +2,7 @@ import discord
 import os
 import requests
 from test_mode import testMode
-from time import sleep
+#from time import sleep
 
 botList ={}
 
@@ -43,7 +43,7 @@ class Bot:
 
   def updateServerList(self):
     self.updatingNow = True
-    print(f'\n List of servers {self.name} is in: ')
+    print(f'\nList of servers {self.name} is in: ')
 
     
     if (testMode):
