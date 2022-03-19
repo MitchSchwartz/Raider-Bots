@@ -1,5 +1,5 @@
 import sys
-from endpoints import updateAlltheBots
+from updateAllBots import updateAlltheBots
 from bots_online import botList
 import asyncio
 import threading
