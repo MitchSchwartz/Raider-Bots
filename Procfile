@@ -1,2 +1,2 @@
-web: gunicorn endpoint:app.startFlask
+web: gunicorn main:app
 worker: python main.py
