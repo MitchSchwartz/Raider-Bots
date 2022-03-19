@@ -1,4 +1,5 @@
 import sys
+from endpoints import startFlask
 from updateAllBots import updateAlltheBots
 from bots_online import botList
 import asyncio
@@ -17,7 +18,7 @@ print(sys.version_info)
 
 #run all the things
 #newBot.runNewBot()
-
+startFlask()
 
 #Bots Online
 def botsOnline():
