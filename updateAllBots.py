@@ -1,7 +1,7 @@
 from get_token_values import getTokenValues
 from reset_timer_update import resetTimerUpdate
 from tournament_timer_update import tournamentTimerUpdate
-import datetime
+from datetime import datetime
 import requests
 from time import sleep
 
