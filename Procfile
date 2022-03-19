@@ -1,2 +1,2 @@
-web: gunicorn endpoint:raider-bots.startFlask()
+web: gunicorn endpoint:app
 worker: python main.py
