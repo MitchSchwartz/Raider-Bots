@@ -43,12 +43,12 @@ def updateAlltheBots():
       print("tournament bot error, probably rate limit")
     
     
-    
+    ### Ping Deadman's Snitch (heroku: apps/raider-bots/resources)
     #if (i >=pingFreq or i < 1):
     url = 'https://nosnch.in/6419e9cc41'
     headers = {'Content-Type': 'application/x-www-url-formencoded'}
     r = requests.post(url, headers=headers)
-    print(r.json())
+    print(r)
       
       # if(i>=pingFreq):
       #   i=0
