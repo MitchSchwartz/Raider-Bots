@@ -5,6 +5,7 @@ from datetime import datetime
 import requests
 from time import sleep
 
+pingFreq = 30
 
 def updateAlltheBots():
   start = datetime.now()
@@ -31,21 +32,21 @@ def updateAlltheBots():
     except:
       print("tournament bot error, probably rate limit")
     
-    pingFreq = 30
     
-    if (i >=pingFreq or i < 1):
-      url = 'https://nosnch.in/74bee12403'
-      headers = {'Content-Type': 'application/x-www-url-formencoded'}
-      r = requests.post(url, headers=headers)
-      print(r)
+    
+    # if (i >=pingFreq or i < 1):
+    url = 'https://nosnch.in/74bee12403'
+    headers = {'Content-Type': 'application/x-www-url-formencoded'}
+    r = requests.post(url, headers=headers)
+    print(f"\n>>>watchdog response: {r.json()}")
       
-      if(i>=pingFreq):
-        i=0
-      print(f"i: {i}")
+    #   if(i>=pingFreq):
+    #     i=0
+    #   print(f"i: {i}")
       
-    else: 
-      i += 1
-      print(f"i: {i}")
+    # else: 
+    #   i += 1
+    #   print(f"i: {i}")
     
     end = datetime.now()
     print(f"\n >>> updateAlltheBots Executed - {end} \n")
