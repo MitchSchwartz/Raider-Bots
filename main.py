@@ -1,5 +1,5 @@
 import sys
-from endpoints import updateAlltheBots
+from endpoints import updateAlltheBots, startFlask
 from bots_online import botList
 import asyncio
 import threading
@@ -13,7 +13,7 @@ print(sys.version)
 print(sys.version_info)
 
 #Start Web Server
-#startFlask()
+startFlask()
 
 #run all the things
 #newBot.runNewBot()

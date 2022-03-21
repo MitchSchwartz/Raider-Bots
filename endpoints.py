@@ -18,7 +18,8 @@ app = Flask('')
 
 def updateAlltheBots():
   start = datetime.now()
-  i=0
+  # i=0
+  # pingFreq = 30
   
   print("\n", f">>> RUNNING updateAlltheBots  - {start} \n")
   
@@ -41,21 +42,21 @@ def updateAlltheBots():
     except:
       print("tournament bot error, probably rate limit")
     
-    pingFreq = 30
     
-    if (i >=pingFreq or i < 1):
-      url = 'https://nosnch.in/74bee12403'
-      headers = {'Content-Type': 'application/x-www-url-formencoded'}
-      r = requests.post(url, headers=headers)
-      print(r)
+    
+    #if (i >=pingFreq or i < 1):
+    url = 'https://nosnch.in/6419e9cc41'
+    headers = {'Content-Type': 'application/x-www-url-formencoded'}
+    r = requests.post(url, headers=headers)
+    print(r.json())
       
-      if(i>=pingFreq):
-        i=0
-      print(f"i: {i}")
+      # if(i>=pingFreq):
+      #   i=0
+      # print(f"i: {i}")
       
-    else: 
-      i += 1
-      print(f"i: {i}")
+    # else: 
+    #   i += 1
+    #   print(f"i: {i}")
     
     end = datetime.now()
     print(f"\n >>> updateAlltheBots Executed - {end} \n")
@@ -72,7 +73,7 @@ def updateAlltheBots():
 
 @app.route('/')
 # pinged every minute by https://console.cron-job.org/dashboard
-def ping(_fakeParam1, _fakeParam2):
+def ping():
   return('ok')
       
     
