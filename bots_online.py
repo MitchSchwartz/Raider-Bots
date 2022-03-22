@@ -1,11 +1,10 @@
 import discord
 import os
 import requests
-from test_mode import testMode
 #from time import sleep
 
 botList ={}
-
+testMode = os.getenv("testMode")
 
     
 class Bot:
