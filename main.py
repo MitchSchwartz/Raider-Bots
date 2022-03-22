@@ -4,7 +4,7 @@ from bot_class_def import botList
 import asyncio
 import threading
 import time
-#from newBot.newbot import newBot
+
 
 #discord logging
 #logging.basicConfig(level=logging.INFO)
@@ -16,7 +16,6 @@ print(sys.version_info)
 startFlask()
 
 #run all the things
-#newBot.runNewBot()
 
 
 #Bots Online
