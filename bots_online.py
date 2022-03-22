@@ -5,6 +5,7 @@ import requests
 
 botList ={}
 testMode = os.getenv("testMode")
+print(f"/n>>>testMode: {testMode}")
 
     
 class Bot:
@@ -42,14 +43,13 @@ class Bot:
 
   def updateServerList(self):
     self.updatingNow = True
-    print(f'\nList of servers {self.name} is in: ')
-
     
-    if (testMode):
+    if (testMode == "True"):
       self.serverList = [911693934231703602]
+      print(f'\n Running {self.name}.updateServerList() in testMode')
 
-    else:
-      
+    else:      
+      print(f'\nList of servers {self.name} is in: ')
       for guild in self.client.guilds:
         print(guild.name)
         if guild.id not in self.serverList:
@@ -78,7 +78,7 @@ class Bot:
     for _server in self.serverList:
       print(f"\n>>> Running updateBot {self.name} for {_server}")
       
-      if(testMode and (_server != 911693934231703602 or _server =="")):
+      if(testMode == "True" and (_server != 911693934231703602 or _server =="")):
         print(f"Skipping {_server} due to Test Mode")
         return
 
