@@ -9,7 +9,7 @@ from dateparser import parse as dParse
 #from json import dumps
 
 #from operator import itemgetter
-from date_functions import findTimeDiff, makeTimerStr
+from scripts.date_functions import findTimeDiff, makeTimerStr
 
 
 
