@@ -45,7 +45,7 @@ def updateAlltheBots():
     
     ### Ping Deadman's Snitch (heroku: apps/raider-bots/resources)
     #if (i >=pingFreq or i < 1):
-    url = 'https://nosnch.in/6419e9cc41'
+    url = 'https://nosnch.in/74bee12403'
     headers = {'Content-Type': 'application/x-www-url-formencoded'}
     r = requests.post(url, headers=headers)
     print(r)
