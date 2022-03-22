@@ -1,6 +1,6 @@
 import sys
 from endpoints import updateAlltheBots, startFlask
-from bots_online import botList
+from bot_class_def import botList
 import asyncio
 import threading
 import time
