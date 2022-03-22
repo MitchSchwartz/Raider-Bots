@@ -6,8 +6,8 @@ import requests
 
 
 from scripts.get_token_values import getTokenValues
-from tournament_timer_update import tournamentTimerUpdate
-from reset_timer_update import resetTimerUpdate
+from scripts.tournament_timer_update import tournamentTimerUpdate
+from scripts.reset_timer_update import resetTimerUpdate
 
 
 
