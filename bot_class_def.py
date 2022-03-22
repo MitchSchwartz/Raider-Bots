@@ -3,10 +3,11 @@ import os
 import requests
 #from time import sleep
 
+
 botList ={}
 testMode = os.getenv("testMode")
 print(f"/n>>>testMode: {testMode}")
-
+testServerId = 911693934231703602
     
 class Bot:
 
@@ -45,14 +46,14 @@ class Bot:
     self.updatingNow = True
     
     if (testMode == "True"):
-      self.serverList = [911693934231703602]
+      self.serverList = [testServerId]
       print(f'\n Running {self.name}.updateServerList() in testMode')
 
     else:      
       print(f'\nList of servers {self.name} is in: ')
       for guild in self.client.guilds:
         print(guild.name)
-        if guild.id not in self.serverList:
+        if guild.id not in self.serverList and guild.id != testServerId:
           print(f"new guild id: {guild.name} : {guild.id}")
           self.serverList.append(guild.id)
 
@@ -78,7 +79,7 @@ class Bot:
     for _server in self.serverList:
       print(f"\n>>> Running updateBot {self.name} for {_server}")
       
-      if(testMode == "True" and (_server != 911693934231703602 or _server =="")):
+      if(testMode == "True" and (_server != testServerId or _server =="")):
         print(f"Skipping {_server} due to Test Mode")
         return
 
