@@ -1,6 +1,6 @@
 import os
 import requests
-from bot_class_def import botList
+from scripts.bot_class_def import botList
 import functools
 
 
