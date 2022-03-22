@@ -5,7 +5,7 @@ from time import sleep as sleep
 import requests
 
 
-from get_token_values import getTokenValues
+from scripts.get_token_values import getTokenValues
 from tournament_timer_update import tournamentTimerUpdate
 from reset_timer_update import resetTimerUpdate
 

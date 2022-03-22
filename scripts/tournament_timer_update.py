@@ -1,7 +1,7 @@
 import os
 import pytz
 import requests
-from bot_class_def import botList 
+from scripts.bot_class_def import botList 
 
 
 from datetime import datetime
