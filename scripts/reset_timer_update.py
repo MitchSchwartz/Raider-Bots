@@ -2,7 +2,7 @@ import pytz
 import dateparser
 
 from datetime import datetime, timedelta
-from date_functions import findTimeDiff, makeTimerStr
+from scripts.date_functions import findTimeDiff, makeTimerStr
 from scripts.bot_class_def import botList
 #from get_server_id import serverList
 
