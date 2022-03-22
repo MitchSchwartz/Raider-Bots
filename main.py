@@ -3,7 +3,6 @@ from endpoints import updateAlltheBots, startFlask
 from bot_class_def import botList
 import asyncio
 import threading
-import time
 
 
 #discord logging
@@ -14,8 +13,6 @@ print(sys.version_info)
 
 #Start Web Server
 startFlask()
-
-#run all the things
 
 
 #Bots Online
@@ -41,19 +38,6 @@ def botsOnline():
     loop.run_forever()
 
 
-# allBotsOnline = False
-# while (not allBotsOnline):
-  
-#   allBotsOnline = True
-#   print(allBotsOnline)
-  
-#   for bot in botList:
-  
-#     if (not botList[bot].online):
-#       allBotsOnline = False
-#       print(allBotsOnline)
-  
-#   time.sleep(1)
 
 botsOnline()
 
