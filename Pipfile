@@ -16,7 +16,7 @@ discord-interactions ="*"
 #[requires]
 "discord.py" = "*"
 #python_version = "3.8"
-
+discord-ext-bot = "*"
 
 [[source]]
 url = "https://pypi.python.org/simple"
