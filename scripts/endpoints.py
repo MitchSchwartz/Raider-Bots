@@ -31,17 +31,17 @@ def updateAlltheBots():
     
     try:    
       resetTimerUpdate()
-    except:
-      print("resetTimer Bot Update error - Mitch")
+    except Exception as e:
+      print(f"!! resetTimer Bot Update error:\n {e}")
     
 
     try:
       tournamentTimerUpdate("cr")
-    except:
-      print("tournament bot error, probably rate limit")
+    except Exception as e:
+      print(f"!! tournament bot error:\n {e}")
     
-    if testMode =="true":
-      print("skipping watchdog due to testMode")
+    if testMode =="True":
+      print("\n skipping watchdog due to testMode")
     else:
       url = 'https://nosnch.in/74bee12403'
       headers = {'Content-Type': 'application/x-www-url-formencoded'}
