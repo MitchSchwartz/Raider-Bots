@@ -26,7 +26,7 @@ def botsOnline():
             try:
                 loop.create_task(botList[key].client.start(botList[key].token))
             except:
-                print(f"Something broke with this bot")
+                print(f"Something {key.name} broke with this bot")
             else:
                 print(f"{key} online")
 
@@ -36,6 +36,7 @@ def botsOnline():
     botUpdateThread.start()
 
     loop.run_forever()
+    ###nothing runs after this
 
 
 
