@@ -113,7 +113,7 @@ def getTokenValues():
     print("\n", botList)
 
     for bot in botList:
-        if not botList[bot].price: #or botList[bot].price == []:
+        if botList[bot].price == [] and botList[bot].type=="token":
             print(f"skipping {botList[bot].name} due to empty price value")
 
         if (botList[bot].baseCurrency == "USD"):
