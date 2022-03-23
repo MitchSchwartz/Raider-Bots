@@ -24,6 +24,7 @@ class Bot:
     self.baseCurrency = _baseCurrency
     self.decimals = _decimals
     self.updatingNow = False
+    #self.function = nameofupdatefunction
 
     self.serverList = []
     self.on_ready = self.client.event(self.on_ready)
@@ -112,7 +113,7 @@ botList = {
   "grimweedBot" : Bot("grimweedBot", "Grmw", "GRIMWEED", "AURUM", 2, "token"),
   "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "NEWT", "AURUM", 2, "token"),
   "mhpBot" : Bot("mhpBot", "MHP", "MHP2", "AURUM", 2, "token"),
-  "bhpBot" : Bot("bhpBot", "MHP", "MHP2", "AURUM", 2, "token"),
+  "bhpBot" : Bot("bhpBot", "MHP", "BHP2", "AURUM", 2, "token"),
   "tourneyBot" : Bot("tourneyBot", "Event", "","","", "timer"),
   "resetTimerBot" : Bot("resetTimerBot", "Reset","","","", "timer")
 }

@@ -68,8 +68,7 @@ def getTokenValues():
 
     botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
 
-    botList["raiderBot"].price = "{:10.2f}".format(float(
-        tokenPrices["RAIDER"]))
+    botList["raiderBot"].price = "{:10.2f}".format(float(tokenPrices["RAIDER"]))
 
     gPaP = priceInAurum(tokenPrices["GRIMWEED"], botList["aurumBot"].price)
     botList["grimweedBot"].price = "{:10.2f}".format(float(gPaP))
@@ -79,6 +78,10 @@ def getTokenValues():
 
     mPaP = priceInAurum(tokenPrices["MHP2"], botList["aurumBot"].price)
     botList["mhpBot"].price = "{:10.2f}".format(float(mPaP))
+
+    bPaP = priceInAurum(tokenPrices["BHP2"], botList["aurumBot"].price)
+    botList["bhpBot"].price = "{:10.2f}".format(float(bPaP))
+
 
     #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
 
@@ -110,6 +113,9 @@ def getTokenValues():
     print("\n", botList)
 
     for bot in botList:
+        if not botList[bot].price: #or botList[bot].price == []:
+            print(f"skipping {botList[bot].name} due to empty price value")
+
         if (botList[bot].baseCurrency == "USD"):
             print(f"{botList[bot].name} in USD")
             try: botList[bot].updateBot(
