@@ -27,7 +27,7 @@ def resetTimerUpdate():
     #----------------------------
 
     #Calculate time difference
-    nextReset = dateparser.parse('midnight, CST',
+    nextReset = dateparser.parse('midnight, CDT',
                                  settings={'PREFER_DATES_FROM': 'future'})
 
     #this next line is to adjust the weekday to wednesday
