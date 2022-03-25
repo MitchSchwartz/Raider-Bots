@@ -26,7 +26,7 @@ def botsOnline():
             try:
                 loop.create_task(botList[key].client.start(botList[key].token))
             except:
-                print(f"Something {key.name} broke with this bot")
+                print(f"{key} couldn't get online")
             else:
                 print(f"{key} online")
 

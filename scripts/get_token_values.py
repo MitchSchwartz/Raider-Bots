@@ -38,34 +38,7 @@ def getTokenValues():
 
     tokenPrices = functools.reduce(mapTokenPrices, res, {})
 
-    print(tokenPrices)
-    # try:
-
-    #   i=0
-
-    #   while i < len(json.loads(r.text)):
-
-    #     if r.json()[i]['currency'] == "AURUM2":
-    #       aP = r.json()[i]['price']
-
-    #     if r.json()[i]['currency'] == "RAIDER":
-    #       rP = r.json()[i]['price']
-
-    #     if r.json()[i]['currency'] == "GRIMWEED":
-    #       gP = r.json()[i]['price']
-
-    #     if r.json()[i]['currency'] == "NEWT":
-    #       nP = r.json()[i]['price']
-
-    #     if r.json()[i]['currency'] == "MHP2":
-    #       mP = r.json()[i]['price']
-
-    #     i += 1
-
-    # except:
-    #   print(f"\n Error processing nomics response")
-    #   return("Token bot updates skipped")
-
+   
     botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
 
     botList["raiderBot"].price = "{:10.2f}".format(float(tokenPrices["RAIDER"]))
@@ -83,34 +56,7 @@ def getTokenValues():
     botList["bhpBot"].price = "{:10.2f}".format(float(bPaP))
 
 
-    #print(f"\n>>> Aurum: {aurumPrice} | Raider: {raiderPrice} | Grimweed: {grimweedPrice}")# | Newt: {newtPrice} \n")
-
-    #print(f"\n>>>serverList: {_serverList}")
-
-    # for x in _serverList:
-    #   print(f"\n>>>x: {x}")
-
-    #   #print(f"\n>>> Updating Aurum - {x}", "\n")
-    #   botNameUpdate(f"Aurum | ${aurumPrice}", "aurumBot", x)
-    #   #print(f"{x} - Aurumbot Updated")
-
-    #   #print(f"\n>>> Updating Raider - {x}", "\n")
-    #   botNameUpdate(f"Raider | ${raiderPrice}", "raiderBot", x )
-    #   #print(f"{x} - RaiderBot Updated")
-
-    #  #print(f"\n>>> Updating Grimweed - {x}", "\n")
-    #   botNameUpdate(f"Grmw | {grimweedPrice} AUR", "grimweedBot", x)
-    #   #print(f"{x} - Grimweed Updated")
-
-    #   #print(f"\n>>> Updating Eye of Newt - {x}", "\n")
-    #   botNameUpdate(f"Newt  | {newtPrice} AUR", "eyeOfNewtBot", x)
-    #   #print(f"{x} - Newt Updated")
-
-    #   #print(f"\n>>> Updating MHP - {x}", "\n")
-    #   botNameUpdate(f"MHP  | {mhpPrice} AUR", "mhpBot", x)
-    #   #print(f"{x} - MHP Updated")
-
-    print("\n", botList)
+    
 
     for bot in botList:
         if botList[bot].price == [] and botList[bot].type=="token":
