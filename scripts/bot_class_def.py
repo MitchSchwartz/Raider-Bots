@@ -18,7 +18,7 @@ class Bot:
     self.client = discord.Client()
     self.token = os.environ.get(f"{_name}")
     self.online = False
-    self.runner = self.client.start(self.token)
+    
     self.botType = _botType
     self.price = 0
     self.baseCurrency = _baseCurrency
@@ -43,6 +43,14 @@ class Bot:
     print('Bot has been added to a new server')     
     self.updateServerList()
 
+
+  def runner(self):
+
+    if(self.enabled == False):
+      print(f"Skipping runner {self.name}; is it disabled")
+      return
+    
+    self.client.start(self.token)
     
 
   def updateServerList(self):
