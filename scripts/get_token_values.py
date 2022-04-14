@@ -55,6 +55,9 @@ def getTokenValues():
     bPaP = priceInAurum(tokenPrices["BHP2"], botList["aurumBot"].price)
     botList["bhpBot"].price = "{:10.2f}".format(float(bPaP))
 
+    sPaP = priceInAurum(tokenPrices["sporebark"], botList["sporebark"].price)
+    botList["sporebotBot"].price = "{:10.2f}".format(float(sPaP))
+
 
     
 

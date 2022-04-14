@@ -114,6 +114,7 @@ botList = {
   "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "NEWT", "AURUM", 2, "token"),
   "mhpBot" : Bot("mhpBot", "MHP", "MHP2", "AURUM", 2, "token"),
   "bhpBot" : Bot("bhpBot", "BHP", "BHP2", "AURUM", 2, "token"),
+  "sporebarkBot" : Bot("sporebarkBot", "Sporebark", "sporebark", "AURUM", 2, "token"),
   "tourneyBot" : Bot("tourneyBot", "Event", "","","", "timer"),
   "resetTimerBot" : Bot("resetTimerBot", "Reset","","","", "timer")
 }
