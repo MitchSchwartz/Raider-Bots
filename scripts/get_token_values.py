@@ -2,11 +2,12 @@ import os
 import requests
 from scripts.bot_class_def import botList
 import functools
+from json import dumps
 
 
-def priceInAurum(_tokenPrice, _aurumPrice):
+def priceInAurum(_tokenPrice):
 
-    price = float(_tokenPrice) / float(_aurumPrice)
+    price = float(_tokenPrice) / float(botList["aurumBot"].price)
     return price
 
 
@@ -38,22 +39,49 @@ def getTokenValues():
 
     tokenPrices = functools.reduce(mapTokenPrices, res, {})
 
-   
-    botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
+    print(f"tokenPrices: {tokenPrices}")
 
-    botList["raiderBot"].price = "{:10.2f}".format(float(tokenPrices["RAIDER"]))
+    
+    for bot in botList:
+      print(bot)
+  
+      if botList[bot].botType == "token":
+  
+        rawPrice = float(tokenPrices[botList[bot].symbol])
+        decimal = "{:10."+f"{botList[bot].decimals}"+"f}"
+        
+        print("decimal: ", decimal," | RawPrice", rawPrice)
+        
+        
+        
+        if botList[bot].baseCurrency == "AURUM":
+          botList[bot].price = decimal.format(priceInAurum(rawPrice))
 
-    gPaP = priceInAurum(tokenPrices["GRIMWEED"], botList["aurumBot"].price)
-    botList["grimweedBot"].price = "{:10.2f}".format(float(gPaP))
+        else:
+          botList[bot].price =  decimal.format(rawPrice)
+          
+        print(botList[bot].symbol,", ", botList[bot].price,", price")
+      
+      
+  
+    # botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
 
-    nPaP = priceInAurum(tokenPrices["NEWT"], botList["aurumBot"].price)
-    botList["eyeOfNewtBot"].price = "{:10.2f}".format(float(nPaP))
+    # botList["raiderBot"].price = "{:10.2f}".format(float(tokenPrices["RAIDER"]))
 
-    mPaP = priceInAurum(tokenPrices["MHP2"], botList["aurumBot"].price)
-    botList["mhpBot"].price = "{:10.2f}".format(float(mPaP))
+    # gPaP = priceInAurum(tokenPrices["GRIMWEED"], botList["aurumBot"].price)
+    # botList["grimweedBot"].price = "{:10.2f}".format(float(gPaP))
 
-    bPaP = priceInAurum(tokenPrices["BHP2"], botList["aurumBot"].price)
-    botList["bhpBot"].price = "{:10.2f}".format(float(bPaP))
+    # nPaP = priceInAurum(tokenPrices["NEWT"], botList["aurumBot"].price)
+    # botList["eyeOfNewtBot"].price = "{:10.2f}".format(float(nPaP))
+
+    # mPaP = priceInAurum(tokenPrices["MHP2"], botList["aurumBot"].price)
+    # botList["mhpBot"].price = "{:10.2f}".format(float(mPaP))
+
+    # bPaP = priceInAurum(tokenPrices["BHP2"], botList["aurumBot"].price)
+    # botList["bhpBot"].price = "{:10.2f}".format(float(bPaP))
+
+    # sPaP = priceInAurum(tokenPrices["SPOREBARK"], botList["sporebarkBot"].price)
+    # botList["sporebarkBot"].price = "{:10.2f}".format(float(sPaP))
 
 
     
@@ -67,12 +95,16 @@ def getTokenValues():
             try: botList[bot].updateBot(
                 f"{botList[bot].displayName} | ${botList[bot].price}")
             except Exception as e:
-                raise(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
+
+                raise f"\n >>> Token Bot {botList[bot].name} update error: {e}"
+
 
         elif (botList[bot].baseCurrency == "AURUM"):
             print(f"{botList[bot].name} in AUR")
             try: botList[bot].updateBot(
                 f"{botList[bot].displayName} | {botList[bot].price} AUR")
             except Exception as e:
-                raise(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
+
+                return(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
+                raise
 

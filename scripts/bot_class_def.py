@@ -11,26 +11,38 @@ testServerId = 911693934231703602
     
 class Bot:
 
-  def __init__(self, _name, _displayName, _symbol, _baseCurrency, _decimals, _botType):
+  def __init__(self, _name, _displayName, _symbol, _baseCurrency, _decimals, _botType, _enabled):
     self.name = _name
     self.symbol = _symbol
     self.displayName = _displayName
     self.client = discord.Client()
     self.token = os.environ.get(f"{_name}")
     self.online = False
-    self.runner = self.client.start(self.token)
+    
     self.botType = _botType
     self.price = 0
     self.baseCurrency = _baseCurrency
     self.decimals = _decimals
     self.updatingNow = False
+    self.enabled = _enabled
     #self.function = nameofupdatefunction
+
 
     self.serverList = []
     self.on_ready = self.client.event(self.on_ready)
     self.on_guild_join = self.client.event(self.on_guild_join)
     
     print(f"\n>>> New Bot: {self.name}\n")
+
+
+  def runner(self):
+
+    if(self.enabled == False):
+      print(f"Skipping runner {self.name}; is it disabled")
+      return
+    
+    self.client.start(self.token)
+    
 
   async def on_ready(self):        
     self.updateServerList()
@@ -41,11 +53,16 @@ class Bot:
     print('Bot has been added to a new server')     
     self.updateServerList()
 
-    
+
+  
 
   def updateServerList(self):
     self.updatingNow = True
     
+    if(self.enabled == False):
+      print(f"Skipping {self.name}; is it disabled")
+      return
+
     if (testMode == "True"):
       self.serverList = [testServerId]
       print(f'\n Running {self.name}.updateServerList() in testMode')
@@ -87,6 +104,10 @@ class Bot:
       if(self.serverList == [] or not self.serverList):
         print(f"Skipping {_server} due to empty serverList")
         return
+
+      if(self.enabled == False):
+        print(f"Skipping {_server}; is it disabled")
+        return
       
 
       
@@ -102,20 +123,21 @@ class Bot:
     
     
       except requests.exceptions.RequestException as e:
-        print(f"\n {e} \n {r.content} \n")
+        print(f"\n {e} \n {r.json()} \n")
     
      
 
  ### (name, display name, symbol, baseCurrency, decimals, bot type)
 botList = {  
-  "raiderBot" : Bot(_name="raiderBot",_displayName="Raider", _symbol="RAIDER", _baseCurrency="USD", _decimals=2, _botType="token"),
-  "aurumBot" : Bot("aurumBot", "Aurum", "AURUM2", "USD", 4, "token"),
-  "grimweedBot" : Bot("grimweedBot", "Grmw", "GRIMWEED", "AURUM", 2, "token"),
-  "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "NEWT", "AURUM", 2, "token"),
-  "mhpBot" : Bot("mhpBot", "MHP", "MHP2", "AURUM", 2, "token"),
-  "bhpBot" : Bot("bhpBot", "BHP", "BHP2", "AURUM", 2, "token"),
-  "tourneyBot" : Bot("tourneyBot", "Event", "","","", "timer"),
-  "resetTimerBot" : Bot("resetTimerBot", "Reset","","","", "timer")
+  "raiderBot" : Bot(_name="raiderBot",_displayName="Raider", _symbol="RAIDER", _baseCurrency="USD", _decimals=2, _botType="token", _enabled=True),
+  "aurumBot" : Bot("aurumBot", "Aurum", "AURUM2", "USD", 4, "token",True),
+  "grimweedBot" : Bot("grimweedBot", "Grmw", "GRIMWEED", "AURUM", 2, "token", True),
+  "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "NEWT", "AURUM", 2, "token", True),
+  "mhpBot" : Bot("mhpBot", "MHP", "MHP2", "AURUM", 2, "token", True),
+  "bhpBot" : Bot("bhpBot", "BHP", "BHP2", "AURUM", 2, "token", True),
+  "sporebarkBot" : Bot("sporebarkBot", "SpBark", "SPOREBARK", "AURUM", 2, "token", True),
+  "tourneyBot" : Bot("tourneyBot", "Event", "","","", "timer", True),
+  "resetTimerBot" : Bot("resetTimerBot", "Reset","","","", "timer", True)
 }
 
 
