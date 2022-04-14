@@ -123,7 +123,7 @@ class Bot:
     
     
       except requests.exceptions.RequestException as e:
-        print(f"\n {e} \n {r.content} \n")
+        print(f"\n {e} \n {r.json()} \n")
     
      
 

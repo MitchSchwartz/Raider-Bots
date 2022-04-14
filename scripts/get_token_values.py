@@ -30,7 +30,7 @@ def getTokenValues():
     try:
         r = requests.get(url)
         res = r.json()
-        print(f"\n>>> Nomics response: {dumps(r.json(), indent=4)} \n")
+        print(f"\n>>> Nomics response: {r} \n")
 
     except requests.exceptions.RequestException as e:
         print(f"\n {e}")
