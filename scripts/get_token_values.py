@@ -41,35 +41,35 @@ def getTokenValues():
 
     print(f"tokenPrices: {tokenPrices}")
 
-    # price = "botList[bot].price"
-    # decimals = "botList[bot].decimals"
-    # symbol = "botList[bot].symbol"
-    # for bot in botList:
-    #   print(bot)
-    #   price =  "\{10." + decimals + "f}".format(float(tokenPrices[symbol]))
-    #   print(symbol,", ",price,", price")
+    price = "botList[bot].price"
+    decimals = "botList[bot].decimals"
+    symbol = "botList[bot].symbol"
+    for bot in botList:
+      print(bot)
+      price =  "\{10." + decimals + "f}".format(float(tokenPrices[symbol]))
+      print(symbol,", ",price,", price")
       
       
       
   
-    botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
+    # botList["aurumBot"].price = "{:10.4f}".format(float(tokenPrices["AURUM2"]))
 
-    botList["raiderBot"].price = "{:10.2f}".format(float(tokenPrices["RAIDER"]))
+    # botList["raiderBot"].price = "{:10.2f}".format(float(tokenPrices["RAIDER"]))
 
-    gPaP = priceInAurum(tokenPrices["GRIMWEED"], botList["aurumBot"].price)
-    botList["grimweedBot"].price = "{:10.2f}".format(float(gPaP))
+    # gPaP = priceInAurum(tokenPrices["GRIMWEED"], botList["aurumBot"].price)
+    # botList["grimweedBot"].price = "{:10.2f}".format(float(gPaP))
 
-    nPaP = priceInAurum(tokenPrices["NEWT"], botList["aurumBot"].price)
-    botList["eyeOfNewtBot"].price = "{:10.2f}".format(float(nPaP))
+    # nPaP = priceInAurum(tokenPrices["NEWT"], botList["aurumBot"].price)
+    # botList["eyeOfNewtBot"].price = "{:10.2f}".format(float(nPaP))
 
-    mPaP = priceInAurum(tokenPrices["MHP2"], botList["aurumBot"].price)
-    botList["mhpBot"].price = "{:10.2f}".format(float(mPaP))
+    # mPaP = priceInAurum(tokenPrices["MHP2"], botList["aurumBot"].price)
+    # botList["mhpBot"].price = "{:10.2f}".format(float(mPaP))
 
-    bPaP = priceInAurum(tokenPrices["BHP2"], botList["aurumBot"].price)
-    botList["bhpBot"].price = "{:10.2f}".format(float(bPaP))
+    # bPaP = priceInAurum(tokenPrices["BHP2"], botList["aurumBot"].price)
+    # botList["bhpBot"].price = "{:10.2f}".format(float(bPaP))
 
-    sPaP = priceInAurum(tokenPrices["SPOREBARK"], botList["sporebarkBot"].price)
-    botList["sporebarkBot"].price = "{:10.2f}".format(float(sPaP))
+    # sPaP = priceInAurum(tokenPrices["SPOREBARK"], botList["sporebarkBot"].price)
+    # botList["sporebarkBot"].price = "{:10.2f}".format(float(sPaP))
 
 
     
