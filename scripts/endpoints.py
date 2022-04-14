@@ -25,14 +25,14 @@ def updateAlltheBots():
     
     
     try:
-      getTokenValues()
+      outcomeTokenValues = getTokenValues()
     except Exception as e:
-      print(f"Token Bot Update error \n {e}")
+      print(f"!!!Token Bot {e} Update error  \n!!!{outcomeTokenValues}")
     
     try:    
-      resetTimerUpdate()
+      outcomeResetTimer = resetTimerUpdate()
     except Exception as e:
-      print(f"!! resetTimer Bot Update error:\n {e}")
+      print(f"!! resetTimer Bot Update error:\n!!{e} \n!!{outcomeResetTimer}")
     
 
     try:
