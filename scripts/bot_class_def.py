@@ -34,6 +34,16 @@ class Bot:
     
     print(f"\n>>> New Bot: {self.name}\n")
 
+
+  def runner(self):
+
+    if(self.enabled == False):
+      print(f"Skipping runner {self.name}; is it disabled")
+      return
+    
+    self.client.start(self.token)
+    
+
   async def on_ready(self):        
     self.updateServerList()
     self.online = True
@@ -44,14 +54,7 @@ class Bot:
     self.updateServerList()
 
 
-  def runner(self):
-
-    if(self.enabled == False):
-      print(f"Skipping runner {self.name}; is it disabled")
-      return
-    
-    self.client.start(self.token)
-    
+  
 
   def updateServerList(self):
     self.updatingNow = True
@@ -132,7 +135,7 @@ botList = {
   "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "NEWT", "AURUM", 2, "token", True),
   "mhpBot" : Bot("mhpBot", "MHP", "MHP2", "AURUM", 2, "token", True),
   "bhpBot" : Bot("bhpBot", "BHP", "BHP2", "AURUM", 2, "token", False),
-  "sporebarkBot" : Bot("sporebarkBot", "SpBark", "SPOREBARK", "AURUM", 2, "token", True),
+  "sporebarkBot" : Bot("sporebarkBot", "SpBark", "SPOREBARK", "AURUM", 2, "token", False),
   "tourneyBot" : Bot("tourneyBot", "Event", "","","", "timer", True),
   "resetTimerBot" : Bot("resetTimerBot", "Reset","","","", "timer", True)
 }
