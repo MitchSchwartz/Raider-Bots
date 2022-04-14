@@ -41,13 +41,13 @@ def getTokenValues():
 
     print(f"tokenPrices: {tokenPrices}")
 
-    price = "botList[bot].price"
-    decimals = "botList[bot].decimals"
-    symbol = "botList[bot].symbol"
-    for bot in botList:
-      print(bot)
-      price =  "\{10." + decimals + "f}".format(float(tokenPrices[symbol]))
-      print(symbol,", ",price,", price")
+    # price = "botList[bot].price"
+    # decimals = "botList[bot].decimals"
+    # symbol = "botList[bot].symbol"
+    # for bot in botList:
+    #   print(bot)
+    #   price =  "\{10." + decimals + "f}".format(float(tokenPrices[symbol]))
+    #   print(symbol,", ",price,", price")
       
       
       
