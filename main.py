@@ -24,14 +24,14 @@ def botsOnline():
     def botStart():
         for key in botList:
             try:
-              if(key.enabled == False):
+              if(botList[key].enabled == False):
                 print(f"Skipping {key}; is it disabled")
                 return   
                 
               loop.create_task(botList[key].client.start(botList[key].token))
               
-            except:
-                print(f"{key} couldn't get online")
+            except Exception as e:
+                raise(f"{key} couldn't get online due to {e}")
             else:
                 print(f"{key} online")
 
