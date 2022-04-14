@@ -5,7 +5,7 @@ import functools
 from json import dumps
 
 
-def priceInAurum(_tokenPrice, _aurumPrice):
+def priceInAurum(_tokenPrice):
 
     price = float(_tokenPrice) / float(botList["aurumBot"].price)
     return price
@@ -41,14 +41,26 @@ def getTokenValues():
 
     print(f"tokenPrices: {tokenPrices}")
 
-    price = "botList[bot].price"
-    decimals = "botList[bot].decimals"
-    symbol = "botList[bot].symbol"
+    
     for bot in botList:
       print(bot)
-      price =  "\{10." + decimals + "f}".format(float(tokenPrices[symbol]))
-      print(symbol,", ",price,", price")
-      
+  
+      if botList[bot].botType == "token":
+  
+        rawPrice = float(tokenPrices[botList[bot].symbol])
+        decimal = "{:10."+f"{botList[bot].decimals}"+"f}"
+        
+        print("decimal: ", decimal," | RawPrice", rawPrice)
+        
+        
+        
+        if botList[bot].baseCurrency == "AURUM":
+          botList[bot].price = decimal.format(priceInAurum(rawPrice))
+
+        else:
+          botList[bot].price =  decimal.format(rawPrice)
+          
+        print(botList[bot].symbol,", ", botList[bot].price,", price")
       
       
   
