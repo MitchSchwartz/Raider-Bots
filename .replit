@@ -1,1 +1,2 @@
+chmod +x repl.deploy 
 run="./repl.deploy --standalone python main.py"
