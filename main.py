@@ -3,7 +3,7 @@ from scripts.endpoints import updateAlltheBots, startFlask
 from scripts.bot_class_def import botList
 import asyncio
 import threading
-
+#test
 
 #discord logging
 #logging.basicConfig(level=logging.INFO)
