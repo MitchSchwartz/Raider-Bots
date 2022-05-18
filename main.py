@@ -4,9 +4,9 @@ from scripts.bot_class_def import botList
 import asyncio
 import threading
 
-
-from dotenv import load_dotenv
-load_dotenv()
+if (testMode):
+  from dotenv import load_dotenv
+  load_dotenv()
 
 #discord logging
 #logging.basicConfig(level=logging.INFO)

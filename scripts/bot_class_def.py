@@ -3,8 +3,9 @@ import os
 import requests
 #from time import sleep
 
-from dotenv import load_dotenv
-load_dotenv()
+if (testMode):
+  from dotenv import load_dotenv
+  load_dotenv()
 
 
 botList ={}
