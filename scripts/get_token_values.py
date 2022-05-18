@@ -4,7 +4,7 @@ from scripts.bot_class_def import botList
 import functools
 from json import dumps
 
-if (testMode == True):
+if (os.getenv("testMode") == True):
   from dotenv import load_dotenv
   load_dotenv()
 

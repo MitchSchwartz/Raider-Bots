@@ -3,7 +3,7 @@ import os
 import requests
 #from time import sleep
 
-if (testMode == True):
+if (os.getenv("testMode") == True):
   from dotenv import load_dotenv
   load_dotenv()
 
