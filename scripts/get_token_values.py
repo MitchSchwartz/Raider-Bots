@@ -4,8 +4,8 @@ from scripts.bot_class_def import botList
 import functools
 from json import dumps
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 def priceInAurum(_tokenPrice):

@@ -5,8 +5,8 @@ import asyncio
 import threading
 
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 #discord logging
 #logging.basicConfig(level=logging.INFO)

@@ -3,8 +3,8 @@ import os
 import requests
 #from time import sleep
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 botList ={}
