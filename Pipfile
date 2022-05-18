@@ -1,24 +1,50 @@
-[dev-packages]
-
-[packages]
-pylint = "*"
-rope = "*"
-pyusb = "*"
-discord = "*"
-asyncio = "*"
-datetime = "*"
-flask = "*"
-pytz = "*"
-dateparser = "*"
-requests = "*"
-gunicorn = "*"
-discord-interactions ="*"
-#[requires]
-"discord.py" = "*"
-#python_version = "3.8"
-discord-ext-bot = "*"
-
 [[source]]
-url = "https://pypi.python.org/simple"
+url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
+
+[packages]
+aiohttp = "==3.7.4.post0"
+async-timeout = "==3.0.1"
+asyncio = "==3.4.3"
+attrs = "==21.4.0"
+"backports.zoneinfo" = "==0.2.1"
+certifi = "==2021.10.8"
+chardet = "==4.0.0"
+charset-normalizer = "==2.0.12"
+click = "==8.0.4"
+colorama = "==0.4.4"
+dateparser = "==1.1.1"
+distlib = "==0.3.4"
+filelock = "==3.6.0"
+gunicorn = "==20.1.0"
+idna = "==3.3"
+itsdangerous = "==2.1.1"
+multidict = "==6.0.2"
+pip-init = "==0.0.5"
+pipenv = "==2022.1.8"
+platformdirs = "==2.5.1"
+py-cord = "==2.0.0rc1"
+python-dateutil = "==2.8.2"
+python-dotenv = "==0.20.0"
+pytz = "==2022.1"
+pytz-deprecation-shim = "==0.1.0.post0"
+regex = "==2022.3.2"
+requests = "==2.27.1"
+six = "==1.16.0"
+typing-extensions = "==4.1.1"
+tzdata = "==2022.1"
+tzlocal = "==4.2"
+urllib3 = "==1.26.8"
+virtualenv = "==20.13.2"
+virtualenv-clone = "==0.5.7"
+yarl = "==1.7.2"
+Flask = "==2.0.3"
+Jinja2 = "==3.0.3"
+MarkupSafe = "==2.1.1"
+Werkzeug = "==2.0.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10.4"
