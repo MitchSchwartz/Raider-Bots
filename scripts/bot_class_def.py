@@ -56,7 +56,6 @@ class Bot:
     self.updateServerList()
 
 
-  
 
   def updateServerList(self):
     self.updatingNow = True
