@@ -4,7 +4,7 @@ from scripts.bot_class_def import botList
 import asyncio
 import threading
 
-if (testMode):
+if (testMode == True):
   from dotenv import load_dotenv
   load_dotenv()
 
