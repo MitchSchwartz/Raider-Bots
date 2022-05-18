@@ -3,6 +3,9 @@ import os
 import requests
 #from time import sleep
 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 botList ={}
 testMode = os.getenv("testMode")
@@ -15,10 +18,9 @@ class Bot:
     self.name = _name
     self.symbol = _symbol
     self.displayName = _displayName
-    self.client = discord.Client()
+    self.client = discord.Bot()
     self.token = os.environ.get(f"{_name}")
-    self.online = False
-    
+    self.online = False    
     self.botType = _botType
     self.price = 0
     self.baseCurrency = _baseCurrency
