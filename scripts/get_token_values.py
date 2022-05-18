@@ -5,7 +5,7 @@ import functools
 from json import dumps
 
 if (os.getenv("testMode") == True):
-  from python-dotenv import load_dotenv
+  from dotenv import load_dotenv
   load_dotenv()
 
 def priceInAurum(_tokenPrice):
