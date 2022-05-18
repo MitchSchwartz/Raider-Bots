@@ -5,7 +5,7 @@ import asyncio
 import threading
 
 if (os.getenv("testMode") == True):
-  from dotenv import load_dotenv
+  from python-dotenv import load_dotenv
   load_dotenv()
 
 #discord logging
