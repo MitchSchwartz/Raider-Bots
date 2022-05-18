@@ -56,7 +56,6 @@ class Bot:
     self.updateServerList()
 
 
-  
 
   def updateServerList(self):
     self.updatingNow = True
@@ -133,7 +132,7 @@ class Bot:
 botList = {  
   "raiderBot" : Bot(_name="raiderBot",_displayName="Raider", _symbol="RAIDER", _baseCurrency="USD", _decimals=2, _botType="token", _enabled=True),
   "aurumBot" : Bot("aurumBot", "Aurum", "AURUM2", "USD", 4, "token",True),
-  "grimweedBot" : Bot("grimweedBot", "Grmw", "GRIMWEED", "AURUM", 2, "token", True),
+  "grimweedBot" : Bot("grimweedBot", "GrmW", "GRIMWEED", "AURUM", 2, "token", True),
   "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "NEWT", "AURUM", 2, "token", True),
   "mhpBot" : Bot("mhpBot", "MHP", "MHP2", "AURUM", 2, "token", True),
   "bhpBot" : Bot("bhpBot", "BHP", "BHP2", "AURUM", 2, "token", True),
