@@ -35,10 +35,10 @@ def updateAlltheBots():
       print(f"!! resetTimer Bot Update error:\n!!{e} \n!!{outcomeResetTimer}")
     
 
-    try:
-      tournamentTimerUpdate("cr")
-    except Exception as e:
-      print(f"!! tournament bot error:\n {e}")
+    # try:
+    #   tournamentTimerUpdate("cr")
+    # except Exception as e:
+    #   print(f"!! tournament bot error:\n {e}")
     
     if testMode =="True":
       print("\n skipping watchdog due to testMode")

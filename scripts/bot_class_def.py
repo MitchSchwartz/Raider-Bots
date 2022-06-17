@@ -137,7 +137,7 @@ botList = {
   "mhpBot" : Bot("mhpBot", "MHP", "MHP2", "AURUM", 2, "token", True),
   "bhpBot" : Bot("bhpBot", "BHP", "BHP2", "AURUM", 2, "token", True),
   "sporebarkBot" : Bot("sporebarkBot", "SpBark", "SPOREBARK", "AURUM", 2, "token", True),
-  "tourneyBot" : Bot("tourneyBot", "Event", "","","", "timer", True),
+  # "tourneyBot" : Bot("tourneyBot", "Event", "","","", "timer", True),
   "resetTimerBot" : Bot("resetTimerBot", "Reset","","","", "timer", True)
 }
 
