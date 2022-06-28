@@ -15,6 +15,36 @@ testMode = os.getenv("testMode")
 app = Flask('')
 
 
+def updateAlltheBots():
+    start = datetime.now()
+    print("\n", f">>> RUNNING updateAlltheBots  - {start} \n")
+
+    tt.skipDueToRateLimit = False  # for tourney bot 429 handling
+
+    while True:  # forever
+
+        ### Token Bots ###
+        try:
+            outcomeTokenValues = getTokenValues()
+        except Exception as e:
+            print(f"!!!Token Bot {e} Update error  \n!!!{outcomeTokenValues}")
+
+        ### Reset Timer Bot ###
+        try:
+            outcomeResetTimer = resetTimerUpdate()
+        except Exception as e:
+            skipDueToRateLimit = True
+            print(
+                f"!! resetTimer Bot Update error:\n!!{e} \n!!{outcomeResetTimer}")
+
+        ### Tournament Timer Bot Update ###
+        if True:#(not tt.skipDueToRateLimit or tt.skipCount > tt.skipAmount or tt.skipCount == 0):
+
+            try:
+                tournamentTimerUpdate("cr")
+
+            except Exception as e:
+                print("Tournament Bot update error: ", e)
 
 def updateAlltheBots():
   start = datetime.now()
@@ -35,10 +65,10 @@ def updateAlltheBots():
       print(f"!! resetTimer Bot Update error:\n!!{e} \n!!{outcomeResetTimer}")
     
 
-    # try:
-    #   tournamentTimerUpdate("cr")
-    # except Exception as e:
-    #   print(f"!! tournament bot error:\n {e}")
+    try:
+      tournamentTimerUpdate("cr")
+    except Exception as e:
+      print(f"!! tournament bot error:\n {e}")
     
     if testMode =="True":
       print("\n skipping watchdog due to testMode")
@@ -64,13 +94,7 @@ def updateAlltheBots():
 @app.route('/')
 
 def ping():
-  return('ok')
-      
-    
-        
-
-
- 
+  return('ok')           
 
 
 def run():
