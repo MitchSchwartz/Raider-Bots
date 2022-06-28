@@ -116,7 +116,7 @@ class Bot:
       url = f'https://discordapp.com/api/guilds/{_server}/members/@me'        
       headers = {'Authorization': auth, 'Content-Type': 'application/json'}
       payload = {'nick': _newName}
-    
+
     
       try:  
         r = requests.patch(url, json=payload, headers=headers)
@@ -124,7 +124,7 @@ class Bot:
     
     
       except requests.exceptions.RequestException as e:
-        print(f"\n {e} \n {r.json()} \n")
+        print(f"\nName update error for {self.name} on {_server}: {r} \n{e}\n")
     
      
 

@@ -6,7 +6,7 @@ from scripts.date_functions import findTimeDiff, makeTimerStr
 
 from datetime import datetime
 from dateparser import parse as dParse
-#from json import dumps
+from json import dumps
 
 #from operator import itemgetter
 
@@ -28,9 +28,11 @@ def getEvents(_server):
   except requests.exceptions.RequestException as e:
     print(f"\n {e} \n")# {r.content} \n")
     
+  print (">>>TournamentBot r: ", r)
     
   response = r.json()
   #print (dumps(response, indent=4))
+  print (">>>TournamentBot Response: ", dumps(response, indent=4))
   return response
 
 

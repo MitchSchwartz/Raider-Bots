@@ -46,6 +46,7 @@ def resetTimerUpdate():
         botList["resetTimerBot"].updateBot(f"Reset: {str(timeLeft)}")
     except Exception as e:
         print(f"time bot update error {e}")
+        return e
 
 # for x in [serverList]:
 #  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", x)

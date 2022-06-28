@@ -94,7 +94,8 @@ def updateAlltheBots():
 @app.route('/')
 
 def ping():
-  return('ok')           
+  return('ok')
+           
 
 
 def run():
