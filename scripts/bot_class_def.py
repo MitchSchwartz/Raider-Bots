@@ -115,7 +115,7 @@ class Bot:
       auth = "Bot " + self.token
       url = f'https://discordapp.com/api/guilds/{_server}/members/@me'        
       headers = {'Authorization': auth, 'Content-Type': 'application/json'}
-      payload = {'nick': _newName}
+      payload = {'nick': "thing"}# _newName}
 
     
       try:  
