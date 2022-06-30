@@ -19,7 +19,7 @@ def updateAlltheBots():
     start = datetime.now()
     print("\n", f">>> RUNNING updateAlltheBots  - {start} \n")
 
-    tt.skipDueToRateLimit = False  # for tourney bot 429 handling
+    skipDueToRateLimit = False  # for tourney bot 429 handling
 
     while True:  # forever
 
