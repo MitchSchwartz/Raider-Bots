@@ -41,7 +41,7 @@ def getNextEventStart(e):
     try:
         #e.sort(key=itemgetter('choice'), reverse=False)
         #print("e:", e)
-        e.sort(key=lambda x: x["scheduled_start_time"])
+        sorted(e, key=lambda x: x["scheduled_start_time"])
 
         nextStart = dParse(e[0]['scheduled_start_time'])
         # print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
