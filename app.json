@@ -4,6 +4,8 @@
     "image": "heroku/python",
     "repository": "https://github.com/Mitch-PragmaFlow/Raider-Bots",
     "keywords": ["python", "discord" ],
+    "stack": "heroku-22",
+    
     "env": {
       "SECRET_KEY": {
         "description": "The secret key for the Django application.",
