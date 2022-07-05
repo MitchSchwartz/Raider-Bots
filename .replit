@@ -1,3 +1,0 @@
-curl -sL https://repl-deploy.vercel.app/ -o repl.deploy
-chmod +x ./repl.deploy
-run="./repl.deploy --standalone python main.py"

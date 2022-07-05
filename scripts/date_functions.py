@@ -16,6 +16,6 @@ def makeTimerStr(_timeDiff):
         _timeDiff.seconds // 3600) + "h " + str(
             _timeDiff.seconds % 3600 // 60) + "m"
 
-    print("\n>>> Timer: ", _timeDiff, "\n")
+    # print("\n>>> Timer: ", _timeDiff, "\n")
 
     return _timeDiff

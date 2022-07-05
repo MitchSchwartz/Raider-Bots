@@ -34,6 +34,10 @@ class Bot:
     self.on_ready = self.client.event(self.on_ready)
     self.on_guild_join = self.client.event(self.on_guild_join)
     
+    self.skip = False
+    self.skipCounter = 0
+    self.skipLimit = 10
+    
     print(f"\n>>> New Bot: {self.name}\n")
 
 
@@ -76,7 +80,7 @@ class Bot:
           print(f"new guild id: {guild.name} : {guild.id}")
           self.serverList.append(guild.id)
 
-    print(f"serverList: {self.serverList}")
+    print(f"{self.name} serverList: {self.serverList}")
     self.updatingNow = False
     
     
@@ -85,7 +89,7 @@ class Bot:
   ### BOT UPDATE METHOD ###
   def updateBot(self, _newName):
     print(f"{self.name} update function starting")
-    
+    print("_newName = ", _newName)
     self.updateServerList()
     
     # while self.updatingNow:
@@ -93,7 +97,7 @@ class Bot:
     #   sleep(1)
 
     
-    print(f"\n>>>self.serverList: {self.serverList}")
+    # print(f"\n>>>self.serverList: {self.serverList}")
     
     for _server in self.serverList:
       print(f"\n>>> Running updateBot {self.name} for {_server}")
@@ -115,8 +119,8 @@ class Bot:
       auth = "Bot " + self.token
       url = f'https://discordapp.com/api/guilds/{_server}/members/@me'        
       headers = {'Authorization': auth, 'Content-Type': 'application/json'}
-      payload = {'nick': "thing"}# _newName}
-
+      payload = {'nick': _newName}
+    
     
       try:  
         r = requests.patch(url, json=payload, headers=headers)

@@ -1,7 +1,7 @@
 import os
 import pytz
 import requests
-from scripts.bot_class_def import botList 
+from scripts.bot_class_def import botList, testMode
 from scripts.date_functions import findTimeDiff, makeTimerStr
 
 from datetime import datetime
@@ -16,24 +16,28 @@ from json import dumps
 
 
 def getEvents(_server):
-  auth = "Bot " + os.environ.get(str("resetTimerBot"))
+    auth = "Bot " + os.environ.get(str("resetTimerBot"))
 
-  guildId = 860057024611876865
 
-  url = f"https://discordapp.com/api/v9/guilds/{guildId}/scheduled-events"
-  headers = {'Authorization': auth, 'Content-Type': 'application/json'}
-  
-  try:
-    r = requests.get(url, headers=headers)
-  except requests.exceptions.RequestException as e:
-    print(f"\n {e} \n")# {r.content} \n")
-    
-  print (">>>TournamentBot r: ", r)
-    
-  response = r.json()
-  #print (dumps(response, indent=4))
-  print (">>>TournamentBot Response: ", dumps(response, indent=4))
-  return response
+    if testMode:
+        guildId = 911693934231703602
+    else:
+        guildId = 860057024611876865
+
+    url = f"https://discordapp.com/api/v9/guilds/{guildId}/scheduled-events"
+    headers = {'Authorization': auth, 'Content-Type': 'application/json'}
+
+    try:
+     r = requests.get(url, headers=headers)
+    except requests.exceptions.RequestException as e:
+     print(f"\n {e} \n")# {r.content} \n")
+
+    print (">>>TournamentBot r: ", r)
+
+    response = r.json()
+    #print (dumps(response, indent=4))
+    print (">>>TournamentBot Response: ", dumps(response, indent=4))
+    return response
 
 
 
@@ -42,10 +46,10 @@ def getNextEventStart(e):
   try:
     #e.sort(key=itemgetter('choice'), reverse=False)
     print("e:", e)
-    sorted(e, key = lambda x:x["scheduled_start_time"])
-
+    sorted(e, key = lambda x:x['scheduled_start_time'])
+    print("e:", e)
     nextStart = dParse(e[0]['scheduled_start_time'])
-    #print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
+    print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
 
     return nextStart
 
@@ -92,12 +96,13 @@ def tournamentTimerUpdate(_server):
     nextStart =  getNextEventStart(events)
     print("\n>>>there's an event!")
     newBotName = f"Event: {tourneyTimeDiff(nextStart)}"
+    
   except requests.exceptions.RequestException as e:
     print(f"\n>>>Error: {e}")# "\n", dumps(r.content), "\n")
     
     
   try:
-    botList["tourneyBot"].updateBot({newBotName})
+    botList["tourneyBot"].updateBot(newBotName)
     print("tourney bot name updated")
   except requests.exceptions.RequestException as e:
     print(f"\n {e} \n")

@@ -13,8 +13,8 @@ def resetTimerUpdate():
     CST = pytz.timezone('Us/Central')
     now = datetime.now(CST)
 
-    print("\n", "now: ", now)
-    print("\n", "now.weekday(): ", now.weekday(), "\n")
+    # print("\n", "now: ", now)
+    # print("\n", "now.weekday(): ", now.weekday(), "\n")
 
     #----------------------------
     ###For Testing timer changeover (reminder: re-enable 'import timedelta')
