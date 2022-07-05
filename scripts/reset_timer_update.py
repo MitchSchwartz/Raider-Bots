@@ -13,8 +13,8 @@ def resetTimerUpdate():
     CST = pytz.timezone('Us/Central')
     now = datetime.now(CST)
 
-    print("\n", "now: ", now)
-    print("\n", "now.weekday(): ", now.weekday(), "\n")
+    # print("\n", "now: ", now)
+    # print("\n", "now.weekday(): ", now.weekday(), "\n")
 
     #----------------------------
     ###For Testing timer changeover (reminder: re-enable 'import timedelta')
@@ -46,6 +46,7 @@ def resetTimerUpdate():
         botList["resetTimerBot"].updateBot(f"Reset: {str(timeLeft)}")
     except Exception as e:
         print(f"time bot update error {e}")
+        return e
 
 # for x in [serverList]:
 #  botNameUpdate(f"Reset: {str(timeLeft)}", "resetTimerBot", x)

@@ -36,6 +36,7 @@ def getTokenValues():
 
     except requests.exceptions.RequestException as e:
         print(f"\n {e}")
+        return e
 
     #reduce array to currency:price key:value pairing
 
@@ -98,7 +99,8 @@ def getTokenValues():
                 f"{botList[bot].displayName} | ${botList[bot].price}")
             except Exception as e:
 
-                raise f"\n >>> Token Bot {botList[bot].name} update error: {e}"
+                print(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
+                return e
 
 
         elif (botList[bot].baseCurrency == "AURUM"):
@@ -107,6 +109,7 @@ def getTokenValues():
                 f"{botList[bot].displayName} | {botList[bot].price} AUR")
             except Exception as e:
 
-                return(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
-                raise
+                print(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
+                return e
+                
 
