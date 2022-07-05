@@ -45,5 +45,5 @@ def resetTimerUpdate():
     try:
         botList["resetTimerBot"].updateBot(f"Reset: {str(timeLeft)}")
     except Exception as e:
-        print(f"time bot update error {e}")
+        print(f"Timer Bot update error {e}")
 

@@ -35,7 +35,8 @@ def botsOnline():
               loop.create_task(botList[key].client.start(botList[key].token))
               
             except Exception as e:
-                raise(f"{key} couldn't get online due to {e}")
+                print(f"{key} couldn't get online due to {e}")
+                return
             else:
                 print(f"{key} online")
 

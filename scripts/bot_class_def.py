@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-botList ={}
+botList = {}
 testMode = os.getenv("testMode")
 print(f"/n>>>testMode: {testMode}")
 testServerId = 911693934231703602
@@ -65,7 +65,7 @@ class Bot:
       return
 
     if (testMode == "True"):
-      self.serverList = [testServerId]
+      self.serverList = [self.client.get_guild(testServerId)]
       print(f'\n Running {self.name}.updateServerList() in testMode')
 
     else:      
@@ -74,7 +74,7 @@ class Bot:
         print(guild.name)
         if guild.id not in self.serverList and guild.id != testServerId:
           print(f"new guild id: {guild.name} : {guild.id}")
-          self.serverList.append(guild.id)
+          self.serverList.append(guild)
 
     print(f"serverList: {self.serverList}")
     self.updatingNow = False
@@ -93,18 +93,19 @@ class Bot:
     #   sleep(1)
 
     
-    print(f"\n>>>self.serverList: {self.serverList}")
+    #print(f"\n>>>self.serverList: {self.serverList}")
     
     for _server in self.serverList:
-      print(f"\n>>> Running updateBot {self.name} for {_server}")
+      print(f"\n>>> Running updateBot {self.name} for {_server.id}")
       
-      if(testMode == "True" and (_server != testServerId or _server =="")):
-        print(f"Skipping {_server} due to Test Mode")
+      if(testMode == "True" and (_server.id != testServerId or _server.id =="")):
+        print(f"Skipping {_server.name} due to Test Mode")
         return
-
-      if(self.serverList == [] or not self.serverList):
-        print(f"Skipping {_server} due to empty serverList")
-        return
+      
+      #this is probably out of order 2022-06-23
+      # if(self.serverList == [] or not self.serverList):
+      #   print(f"Skipping {self.name} due to empty serverList")
+      #   return
 
       if(self.enabled == False):
         print(f"Skipping {_server}; is it disabled")
@@ -124,7 +125,7 @@ class Bot:
     
     
       except requests.exceptions.RequestException as e:
-        print(f"\n {e} \n {r.json()} \n")
+        print(f"\n {self.name} name update error for {_server}  {e} \n {r.json()} \n")
     
      
 

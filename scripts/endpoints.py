@@ -5,17 +5,24 @@ from time import sleep as sleep
 import requests
 import os
 
+
+from scripts.bot_class_def import botList
 from scripts.get_token_values import getTokenValues
 import scripts.tournament_timer_update as tt
 from scripts.reset_timer_update import resetTimerUpdate
 
+
 testMode = os.getenv("testMode")
-
-
 app = Flask('')
+
+tBotShortner = "botList['tourneyBot'].serverList.id[0]"
+
 
 
 def updateAlltheBots():
+    # while not tBotShortner:
+    #     sleep(1)
+        
     start = datetime.now()
     print("\n", f">>> RUNNING updateAlltheBots  - {start} \n")
 
@@ -23,11 +30,13 @@ def updateAlltheBots():
 
     while True:  # forever
 
+
         ### Token Bots ###
         try:
             outcomeTokenValues = getTokenValues()
         except Exception as e:
-            print(f"!!!Token Bot {e} Update error  \n!!!{outcomeTokenValues}")
+            print(f"!!!Token Bot {e} Update error  \n!!!{e}")
+
 
         ### Reset Timer Bot ###
         try:
@@ -35,13 +44,20 @@ def updateAlltheBots():
         except Exception as e:
             skipDueToRateLimit = True
             print(
-                f"!! resetTimer Bot Update error:\n!!{e} \n!!{outcomeResetTimer}")
+                f"!! resetTimer Bot Update error:\n!!{e}")
+
 
         ### Tournament Timer Bot Update ###
+        
+        
+        if (len(botList['tourneyBot'].serverList) > 0 ):
+            tBotServer = botList['tourneyBot'].serverList[0]
+            print("tbot server:", tBotServer)
+        
         if (not tt.skipDueToRateLimit or tt.skipCount > tt.skipAmount):
-
+    
             try:
-                tt.tournamentTimerUpdate("cr")
+                tt.tournamentTimerUpdate(tBotServer)
 
             except Exception as e:
 
@@ -73,6 +89,7 @@ def updateAlltheBots():
         print(f"\n >>> updateAlltheBots Executed - {end} \n")
 
         sleepTime = end - start
+        
         print(f"sleep time: {sleepTime}")
         sleep(50)
 

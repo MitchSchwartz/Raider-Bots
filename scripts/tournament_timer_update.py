@@ -1,4 +1,6 @@
 import os
+import discord
+from unittest import skip
 import pytz
 import requests
 from scripts.bot_class_def import botList
@@ -15,42 +17,61 @@ skipCount = 0
 skipAmount = 20
 
 
-def getEvents(_server):
-    auth = "Bot " + os.environ.get(str("resetTimerBot"))
 
-    guildId = 860057024611876865
+def getEvents(_server: discord.Guild):
 
-    url = f"https://discordapp.com/api/v9/guilds/{guildId}/scheduled-events"
-    headers = {'Authorization': auth, 'Content-Type': 'application/json'}
+       
+    # auth = "Bot " + os.environ.get(str("resetTimerBot"))
+    # guildId = 860057024611876865
+  
 
-    try:
-        r = requests.get(url, headers=headers)
+    # url = f"https://discordapp.com/api/v9/guilds/{guildId}/scheduled-events"
+    # headers = {'Authorization': auth, 'Content-Type': 'application/json'}
+
+    try:  # GET LIST OF EVENTS
+        # r = requests.get(url, headers=headers)
+        r = _server.fetch_scheduled_events()
+        
+           
     except requests.exceptions.RequestException as e:
-        # {r.content} \n")
+        print("Tournament Bot Discord Event Request Error: ", e)
+        if (429 in e):
+            skipDueToRateLimit = True
+            return 429
         print(f"\nError getting events from Discord: {e} \n")
+        return
+    
+    else:
+        print(f"Events r = {r}")
 
-    response = r.json()
+    # response = r.json()
+    print("response: ", r)
+    
     #print (dumps(response, indent=4))
-    if (r == 429):
-        skipDueToRateLimit = True
+    
+    
+    if (r == []):
+        return "No Events Found"
+    
+    print("\n>>> Discord Events response:", response)
     return response
 
 
 def getNextEventStart(e):
 
-    try:
-        #e.sort(key=itemgetter('choice'), reverse=False)
-        #print("e:", e)
-        sorted(e, key=lambda x: x["scheduled_start_time"])
+
+    try:       
+        e.sort(key=lambda x: x["scheduled_start_time"])
+
 
         nextStart = dParse(e[0]['scheduled_start_time'])
-        # print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
+        print(f"\n >>>next start {nextStart}")#" \n >>sorted: {dumps(response, indent =4)}\n")
 
         return nextStart
 
     except requests.exceptions.RequestException as e:
         print(
-            f"\n ! We had an problem getting events from discord: {e} \n {e.content} \n")
+            f"\n ! We had an problem getting events from discord: {e}")
         return
 
 
@@ -73,28 +94,37 @@ def tourneyTimeDiff(nextStart):
     return tourneyTimeDiff
 
 
-def tournamentTimerUpdate(_server):
+def tournamentTimerUpdate(_server: discord.Guild):
 
-    # cool down period if rate limit is hit
+    # cool down period if rate limit is hit, this is a redundant check probably not stricly needed
     if (skipDueToRateLimit == True and skipCount < skipAmount):
         skipCount += 1
         return (f"\n>>> Skipped due to rate limit, Skipcount is now {skipCount}")
 
-    events = False
-    events = getEvents(_server)
-    newBotName = "Event: TBA"
-    # print(f">>>Events:{events}")
+    events = None #reset list
+    events = getEvents(_server)      
+    print(f">>>Events:{events}")    
+    
+    if (events == 429):
+        print(f"EventBot hit a 429 getting events from Discord, entering cooldown mode for {skipAmount} cycles")
+        return
+    
+    if (events == []):
+        print("Discord returned no events, skipping this round")
+        return
+        
+    newBotName = "Event: TBA"  # I don't think this ever gets used right now
 
-    if (not events or len(events) == 0):
+    if (not events):
         return (f"\n>>> Skipped due to: no events returned")
 
     try:
         nextStart = getNextEventStart(events)
-        print("\n>>>there's an event!")
+        print("\n>>> We've found events!")
         newBotName = f"Event: {tourneyTimeDiff(nextStart)}"
     except requests.exceptions.RequestException as e:
         # "\n", dumps(r.content), "\n")
-        print(f"\n>>>Error getting next event: {e}")
+        print(f"\n>>> Error getting next event: {e}")
 
     try:
         botList["tourneyBot"].updateBot({newBotName})

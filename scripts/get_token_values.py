@@ -98,7 +98,8 @@ def getTokenValues():
                 f"{botList[bot].displayName} | ${botList[bot].price}")
             except Exception as e:
 
-                raise f"\n >>> Token Bot {botList[bot].name} update error: {e}"
+                print(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
+                return
 
 
         elif (botList[bot].baseCurrency == "AURUM"):
@@ -108,5 +109,5 @@ def getTokenValues():
             except Exception as e:
 
                 return(f"\n >>> Token Bot {botList[bot].name} update error: {e}")
-                raise
+            
 
