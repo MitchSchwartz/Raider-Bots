@@ -1,3 +1,4 @@
+from fileinput import isfirstline
 from flask import Flask
 from threading import Thread
 from datetime import datetime
@@ -8,10 +9,9 @@ import os
 from scripts.get_token_values import getTokenValues
 from scripts.tournament_timer_update import tournamentTimerUpdate
 from scripts.reset_timer_update import resetTimerUpdate
-from scripts.bot_class_def import botList
+from scripts.bot_class_def import botList, tourneyBot
 
 testMode = os.getenv("testMode")
-tourneyBot = botList['tourneyBot']
 
 app = Flask('')
 
@@ -67,6 +67,10 @@ def updateAlltheBots():
         
         sleepTime = end - start
         print(f"sleep time: {sleepTime}")
+
+        if (tourneyBot.isFirstRun):
+            tourneyBot.isFirstRun = False
+            
         sleep(50)
 
  

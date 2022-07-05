@@ -37,7 +37,8 @@ class Bot:
     self.skip = False
     self.skipCounter = 0
     self.skipLimit = 10
-    
+
+    self.isFirstRun = True
     print(f"\n>>> New Bot: {self.name}\n")
 
 
@@ -134,7 +135,7 @@ class Bot:
 
  ### (name, display name, symbol, baseCurrency, decimals, bot type)
 botList = {  
-  "raiderBot" : Bot(_name="raiderBot",_displayName="Raider", _symbol="RAIDER", _baseCurrency="USD", _decimals=2, _botType="token", _enabled=True),
+  "raiderBot" : Bot(_name="raiderBot", _displayName="Raider", _symbol="RAIDER", _baseCurrency="USD", _decimals=2, _botType="token", _enabled=True),
   "aurumBot" : Bot("aurumBot", "Aurum", "AURUM2", "USD", 4, "token",True),
   "grimweedBot" : Bot("grimweedBot", "GrmW", "GRIMWEED", "AURUM", 2, "token", True),
   "eyeOfNewtBot" : Bot("eyeOfNewtBot", "Newt", "NEWT", "AURUM", 2, "token", True),
@@ -145,5 +146,12 @@ botList = {
   "resetTimerBot" : Bot("resetTimerBot", "Reset","","","", "timer", True)
 }
 
-
-  
+raiderBot = botList['raiderBot']
+aurumBot = botList['aurumBot']
+grimweedBot = botList['grimweedBot']
+eyeOfNewtBot = botList['eyeOfNewtBot']
+mhpBot = botList['mhpBot']
+bhpBot = botList['bhpBot']
+sporebarkBot = botList['sporebarkBot']
+tourneyBot = botList['tourneyBot']
+resetTimerBot = botList['resetTimerBot']

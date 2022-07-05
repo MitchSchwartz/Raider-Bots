@@ -9,9 +9,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-#discord logging
-#logging.basicConfig(level=logging.INFO)
-
 print(sys.version)
 print(sys.version_info)
 
@@ -33,6 +30,7 @@ def botsOnline():
                 return   
                 
               loop.create_task(botList[key].client.start(botList[key].token))
+         
               
             except Exception as e:
                 raise(f"{key} couldn't get online due to {e}")

@@ -85,21 +85,28 @@ def tournamentTimerUpdate(_server):
 
   events = False
   events = getEvents(_server)
-  newBotName = "Event: TBA"
+  
   #print(f">>>Events:{events}")
 
   
   if (not events):
-    return
+    
+    if (botList['tourneyBot'].isFirstRun):
+      print("Tourney bot first run, skipping name update")
+      return
+    
+    newBotName = "Event: TBA"
+    print("No Event")
 
-  try:
-    nextStart =  getNextEventStart(events)
-    print("\n>>>there's an event!")
-    newBotName = f"Event: {tourneyTimeDiff(nextStart)}"
-    
-  except requests.exceptions.RequestException as e:
-    print(f"\n>>>Error: {e}")# "\n", dumps(r.content), "\n")
-    
+  else: 
+    try:
+      nextStart =  getNextEventStart(events)
+      print("\n>>>there's an event!")
+      newBotName = f"Event: {tourneyTimeDiff(nextStart)}"
+      
+    except requests.exceptions.RequestException as e:
+      print(f"\n>>>Error: {e}")# "\n", dumps(r.content), "\n")
+      
     
   try:
     botList["tourneyBot"].updateBot(newBotName)
