@@ -107,12 +107,4 @@ def tournamentTimerUpdate(_server):
   except requests.exceptions.RequestException as e:
     print(f"\n {e} \n")
     
-  
-
-  
-
-
-
-
-
-
+ 

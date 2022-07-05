@@ -69,8 +69,7 @@ def updateAlltheBots():
         print(f"sleep time: {sleepTime}")
         sleep(50)
 
-  
-
+ 
     
 
 
@@ -90,4 +89,4 @@ def startFlask():
     t = Thread(target=run)
     t.start()
 
-    
+  
